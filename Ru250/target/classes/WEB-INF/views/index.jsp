@@ -1,9 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 
 	<head>
+		<base href="<%=basePath%>">
 		<title>Spring MVC Starter Application</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<style type="text/css">
@@ -12,10 +17,9 @@
 			padding: 0
 		}
 		</style>
-		
-		<script src="https://highcharts.com/lib/jquery-1.7.2.js"></script>
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
 	</head>
 
 	<body>
@@ -24,12 +28,12 @@
 		<h1>Group Project</h1>
 		<br/>
 		<h2>Guojun Ren,	Xinhe Gao,	Li Yin,	Qianyu Wang,	Ao Guo</h2>
-		<br/>
-		<!--img alt="" src="https://sebs.rutgers.edu/images/rutgers250-logo.png"-->
+		<br/><!-- 
+		<img alt="" src="https://sebs.rutgers.edu/images/rutgers250-logo.png"> -->
+		<div id="container" style="min-width: 110px; height: 400px; margin: 0 auto"></div>
 		<br/>
 		<a href="persons"><h2>GO RUTGERS<h2></a>
 		<a href="new"><h2>Test a new Jsp</h2></a>
-		<div id="container" style="min-width: 110px; height: 400px; margin: 0 auto"></div>
 	</div>
 	<script type="text/javascript">
 			$(function () {
