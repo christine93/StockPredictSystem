@@ -37,6 +37,15 @@ public class PersonController
         model.addAttribute("listPersons", this.personService.listPersons());
         return "person";
     }
+	
+	/*
+	 * Add a new Page for test
+	 */
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String newPage(Model model) {
+        model.addAttribute("msg", "Hello World!!!");
+        return "NewFile";
+    }
      
     //For add and update person both
     @RequestMapping(value= "/person/add", method = RequestMethod.POST)
