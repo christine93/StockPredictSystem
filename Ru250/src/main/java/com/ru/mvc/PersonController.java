@@ -43,7 +43,7 @@ public class PersonController
 	 */
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newPage(Model model) {
-        model.addAttribute("msg", "Hello World!!!");
+        model.addAttribute("msg", "Hello World!!");
         return "NewFile";
     }
      
