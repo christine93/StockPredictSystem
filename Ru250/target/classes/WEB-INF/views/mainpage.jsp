@@ -41,7 +41,7 @@
 
 				<div class="navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
-                    <!-- 
+                    <!--
                     <li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
@@ -78,11 +78,10 @@
 								</li>
 							</ul>
 						</li>
-                    
+                     -->
 					<li class="light-blue">
                     <a href="login.html">log in</a>
                     </li>
-                    -->
 					</ul><!-- /.ace-nav -->
 				</div><!-- /.navbar-header -->
 			</div><!-- /.container -->
