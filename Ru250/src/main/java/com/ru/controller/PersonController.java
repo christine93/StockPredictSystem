@@ -1,4 +1,4 @@
-package com.ru.mvc;
+package com.ru.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,12 +25,12 @@ public class PersonController
 		this.personService = personService;
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/person")
 	public String indexMapping()
 	{
-		return "mainpage";
+		return "index";
 	}
-
+	
 	@RequestMapping(value = "/persons", method = RequestMethod.GET)
     public String listPersons(Model model) {
         model.addAttribute("person", new Person());
