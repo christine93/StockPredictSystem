@@ -28,7 +28,7 @@ public class PersonController
 	@RequestMapping("/")
 	public String indexMapping()
 	{
-		return "index";
+		return "mainpage";
 	}
 
 	@RequestMapping(value = "/persons", method = RequestMethod.GET)
