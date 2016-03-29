@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cn">
 	<head>
@@ -86,7 +87,7 @@
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button onclick="javascript:window.location.href='index_login_admin.html';" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button onclick="javascript:window.location.href='index_login.html';" type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="icon-key"></i>
 															Login
 														</button>
@@ -96,50 +97,19 @@
 												</fieldset>
 											</form>
 
-										</div><!-- /widget-main -->
-									</div><!-- /widget-body -->
-								</div><!-- /login-box -->
-
-								<div id="forgot-box" class="forgot-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="icon-key"></i>
-												Retrieve Password
-											</h4>
-
-											<div class="space-6"></div>
-											<p>
-												Enter your email and to receive instructions
-											</p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="icon-envelope"></i>
-														</span>
-													</label>
-
-													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
-															<i class="icon-lightbulb"></i>
-															Send Me!
-														</button>
-													</div>
-												</fieldset>
-											</form>
+											
 										</div><!-- /widget-main -->
 
-										<div class="toolbar center">
-											<a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
-												Back to login
-												<i class="icon-arrow-right"></i>
-											</a>
+										<div class="toolbar clearfix" style="align:center">
+											<div>
+												<a href="#" onclick="show_box('signup-box'); return false;" class="user-signup-link">
+													I want to register
+													<i class="icon-arrow-right"></i>
+												</a>
+											</div>
 										</div>
 									</div><!-- /widget-body -->
-								</div><!-- /forgot-box -->
+								</div><!-- /login-box -->
 
 								<div id="signup-box" class="signup-box widget-box no-border">
 									<div class="widget-body">

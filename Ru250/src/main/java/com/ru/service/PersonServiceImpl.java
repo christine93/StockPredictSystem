@@ -51,6 +51,13 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	@Transactional	
+	public Person getPersonByName(String name) {
+		// TODO Auto-generated method stub
+		return personDAO.getPersonByName(name);
+	}
+	
+	@Override
+	@Transactional	
 	public void removePerson(int id) 
 	{
 		// TODO Auto-generated method stub

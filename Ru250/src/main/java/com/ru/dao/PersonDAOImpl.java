@@ -63,6 +63,13 @@ public class PersonDAOImpl implements PersonDAO
 	}
 
 	@Override
+	public Person getPersonByName(String name){
+		Session session = this.sessionFactory.getCurrentSession();
+		Person person = (Person) session.load(Person.class, new String(name));
+		return person;
+	}
+	
+	@Override
 	public void removePerson(int id) 
 	{
 		Session session = this.sessionFactory.getCurrentSession();

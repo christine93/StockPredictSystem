@@ -15,4 +15,8 @@ public interface PersonService
     public Person getPersonById(int id);
     
     public void removePerson(int id);
+
+	public Person getPersonByName(String name);
+
+	//public void removePerson(String name);
 }
