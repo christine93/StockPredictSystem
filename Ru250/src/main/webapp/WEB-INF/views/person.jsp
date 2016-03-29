@@ -11,10 +11,28 @@
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
+    
+    <script type="text/javascript">
+    var url="/persons/${person.id}";
+    $.ajax( {
+    url : url,
+    type : "POST", 
+    dataType:"json",
+    contentType:'application/json;charset=UTF-8',
+    data:JSON.stringify({userId:'1',userName:'hello',password:'test',credits:'2',lastIp:'',lastVisit:'1986-05-27'}),
+    success : function(data) {
+        alert(data.userName);   
+   
+    },error:function(e){
+	    alert("err");
+	    }}
+    )
+    </script>
 </head>
 <body>
 <div align="center">
 <img alt="" src="https://eoas.rutgers.edu/wordpress/wp-content/uploads/rutgers-logo_2x.gif">
+
 <h2>
     Add a Person
 </h2>
@@ -84,12 +102,23 @@
             <td>${person.id}</td>
             <td>${person.name}</td>
             <td>${person.country}</td>
-            <td><a href="<c:url value='/edit/${person.id}' />" >Edit</a></td>
+            <td><a href="<c:url value='/edit/${person.id}' />" >Edit</a>
+		</td>
             <td><a href="<c:url value='/remove/${person.id}' />" >Delete</a></td>
         </tr>
     </c:forEach>
     </table>
 </c:if>
+</div>
+<div align="center">
+<h2>
+    Seach a Person Name
+</h2>
+<table>
+<tr><td>
+		<a href="<c:url value='/persons/1'/>"> <h2>Jason</h2></a>
+</td></tr>
+</table>
 </div>
 </body>
 </html>

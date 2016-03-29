@@ -64,4 +64,11 @@ public class PersonServiceImpl implements PersonService {
 		personDAO.removePerson(id);
 	}
 
+	@Override
+	@Transactional	
+	public List<Person> searPersonName(String name) {
+		// TODO Auto-generated method stub
+		return personDAO.searPersonName(name);
+	}
+
 }

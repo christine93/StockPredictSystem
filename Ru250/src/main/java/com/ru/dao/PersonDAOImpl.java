@@ -2,6 +2,7 @@ package com.ru.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -50,6 +51,16 @@ public class PersonDAOImpl implements PersonDAO
 		for(Person p: listP)
 			log.info("Person List::" + p);
 			return listP;
+	}
+	
+	@Override
+	public List<Person> searPersonName(String name) 
+	{
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Query q = session.createQuery("from Person where name like ?");
+		q.setParameter(0, name);
+		return q.list();
 	}
 
 	@Override

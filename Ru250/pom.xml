@@ -17,6 +17,7 @@
         <org.aspectj-version>1.7.4</org.aspectj-version>
         <org.slf4j-version>1.7.5</org.slf4j-version>
         <hibernate.version>4.3.5.Final</hibernate.version>
+		<jackson.version>1.9.13</jackson.version>
     </properties>
     <dependencies>
         <!-- Spring -->
@@ -142,6 +143,18 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+        
+        <!-- jason -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
      
         <!-- Test -->

@@ -19,4 +19,6 @@ public interface PersonService
 	public Person getPersonByName(String name);
 
 	//public void removePerson(String name);
+    
+    public List<Person> searPersonName(String name);
 }
