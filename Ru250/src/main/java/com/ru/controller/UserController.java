@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ru.commons.MD5;
 import com.ru.entity.Person;
 import com.ru.entity.User;
 import com.ru.service.UserService;
@@ -34,11 +35,12 @@ public class UserController {
 		
     	String userName = request.getParameter("userName");
     	String pwd = request.getParameter("pwd");
+    	String newPwd = MD5.getMD5(pwd);
     	String email = request.getParameter("email");
     	if(userService.isUsernameExist(userName)||userService.isEmailExist(email)){
     		return "error";
     	}else{
-    		this.userService.addUser(userName, email, pwd);
+    		this.userService.addUser(userName, email, newPwd);
     		return "redirect:/login_admin";
 		}
 	}
@@ -48,7 +50,8 @@ public class UserController {
 		User user = new User();
 		String userName = request.getParameter("userName");
     	String pwd = request.getParameter("pwd");
-    	user = userService.login(userName, pwd);
+    	String newPwd = MD5.getMD5(pwd);
+    	user = userService.login(userName, newPwd);
     	if(user!=null){
     		return "mainpage";
     	}else{
