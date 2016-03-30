@@ -13,5 +13,7 @@ public interface UserDAO {
 	/*classify user's role*/
 	public boolean userType(User u);
 	/*get user by username*/
-	public void getUser(User u);
+	public User getUserByName(String name);
+	/*get user by email*/
+	public User getUserByEmail(String email);
 }

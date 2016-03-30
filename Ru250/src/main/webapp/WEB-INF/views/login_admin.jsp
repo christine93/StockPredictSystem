@@ -1,4 +1,11 @@
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+%>
 <!DOCTYPE html>
 <html lang="cn">
 	<head>
@@ -63,11 +70,11 @@
 
 											<div class="space-6"></div>
 
-											<form>
+											<form action="<%=basePath%>/searchperson" method="get">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="username" />
+															<input type="text" class="form-control" name="name" placeholder="username" />
 															<i class="icon-user"></i>
 														</span>
 													</label>
@@ -87,7 +94,7 @@
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button onclick="javascript:window.location.href='index_login.html';" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="icon-key"></i>
 															Login
 														</button>
@@ -122,25 +129,25 @@
 											<div class="space-6"></div>
 											<p> Enter your details to begin: </p>
 
-											<form>
+											<form action="<%=basePath%>/addUser" method="post">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="text" class="form-control" name="email" placeholder="Email" />
 															<i class="icon-envelope"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control" name="userName" placeholder="Username" />
 															<i class="icon-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control" name="pwd" placeholder="Password" />
 															<i class="icon-lock"></i>
 														</span>
 													</label>
@@ -168,7 +175,7 @@
 															Reset
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+														<button type="submit" class="width-65 pull-right btn btn-sm btn-success">
 															Register
 															<i class="icon-arrow-right icon-on-right"></i>
 														</button>

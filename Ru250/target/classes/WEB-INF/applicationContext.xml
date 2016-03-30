@@ -35,6 +35,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.ru.entity.Person</value>
+                <value>com.ru.entity.User</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -42,6 +43,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>  
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="current_session_context_class">thread</prop>
             </props>
         </property>
     </bean>
@@ -53,7 +55,15 @@
     <bean id="personService" class="com.ru.service.PersonServiceImpl">
         <property name="personDAO" ref="personDAO"></property>
     </bean>
-     
+    
+    <bean id="userDAO" class="com.ru.dao.UserDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+    <bean id="userService" class="com.ru.service.UserServiceImpl">
+            <property name="userDAO" ref="userDAO"></property>
+    </bean>
+    
     <tx:annotation-driven transaction-manager="transactionManager"/>
      
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

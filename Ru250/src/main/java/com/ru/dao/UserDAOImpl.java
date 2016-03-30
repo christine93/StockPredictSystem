@@ -2,6 +2,7 @@ package com.ru.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -47,9 +48,33 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public void getUser(User u) {
+	public User getUserByName(String name) {
 		// TODO Auto-generated method stub
-
+		Session session = this.sessionFactory.getCurrentSession();
+		Query q = session.createQuery("from User where username like ?");
+		q.setParameter(0, name);
+		List<User> list = q.list();
+		if(!list.isEmpty()){
+			return list.get(0);
+			}
+		else
+			return null;
 	}
+	
+	@Override
+	public User getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Query q = session.createQuery("from User where email like ?");
+		q.setParameter(0, email);
+		List<User> list = q.list();
+		if(!list.isEmpty()){
+			return list.get(0);
+			}
+		else
+			return null;
+	}
+	
+	
 
 }
