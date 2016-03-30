@@ -26,13 +26,9 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
+
 	
-//	@RequestMapping("/login/{userName}")
-//    public String login(@PathVariable("userName") String userName){
-//        return "redirect:/mainpage";
-//    }
-	
-	//For add and update person both
+	//Register
 	@RequestMapping(value= "/addUser", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("userinfo") User u,HttpServletRequest request){
 		
@@ -47,17 +43,21 @@ public class UserController {
 		}
 	}
 	
-//    @RequestMapping(value= "/person/add", method = RequestMethod.POST)
-//    public String addPerson(@ModelAttribute("person") Person p){
-//         
-//        if(p.getId() == 0){
-//            //new person, add it
-//            this.personService.addPerson(p);
-//        }else{
-//            //existing person, call update
-//            this.personService.updatePerson(p);
-//        }
-//         
-//        return "redirect:/persons";
-//    }
+	@RequestMapping(value= "/login", method = RequestMethod.POST)
+	public String login (@ModelAttribute("userinfo") User u,HttpServletRequest request){
+		User user = new User();
+		String userName = request.getParameter("userName");
+    	String pwd = request.getParameter("pwd");
+    	user = userService.login(userName, pwd);
+    	if(user!=null){
+    		return "mainpage";
+    	}else{
+    		return "error";
+    	}
+//    	request.getSession().setAttribute("sessionname",userName);     //用Session保存用户名
+//    	request.getSession().setAttribute("sessionpwd",pwd);   
+		
+	}
+
+
 }

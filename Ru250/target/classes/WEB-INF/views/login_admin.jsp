@@ -70,18 +70,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 											<div class="space-6"></div>
 
-											<form action="<%=basePath%>/searchperson" method="get">
+											<form action="<%=basePath%>/login" method="post">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" name="name" placeholder="username" />
+															<input type="text" class="form-control" name="userName" placeholder="username" />
 															<i class="icon-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="password" />
+															<input type="password" class="form-control" name="pwd" placeholder="password" />
 															<i class="icon-lock"></i>
 														</span>
 													</label>

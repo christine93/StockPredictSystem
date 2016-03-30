@@ -26,18 +26,6 @@ public  class UserServiceImpl implements UserService{
 		userDAO.addUser(u);
  	}
 
-	@Override
-	@Transactional
-	public void removeUser(User u) {
-		// TODO Auto-generated method stub
-		userDAO.removeUser(u);
-	}
-
-	@Override
-	public boolean isUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	@Transactional
@@ -59,6 +47,17 @@ public  class UserServiceImpl implements UserService{
 		}else{
 			return true;
 		}
+	}
+	
+	@Override
+	@Transactional
+	public User login(String name, String pwd){
+		User u = new User();
+		u = userDAO.getUserByName(name);
+		if(u.getUserpwd().equals(pwd)){
+			return u;
+		}
+		return null;
 	}
 	
 
