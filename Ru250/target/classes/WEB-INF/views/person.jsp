@@ -2,8 +2,13 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+%>
 <html>
 <head>
+<base href="<%=basePath%>">
     <title>Person Page</title>
     <style type="text/css">
         .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
@@ -112,11 +117,13 @@
 </div>
 <div align="center">
 <h2>
-    Seach a Person Name
+    Seach a Person Name and Return Jason
 </h2>
 <table>
 <tr><td>
-		<a href="<c:url value='/persons/1'/>"> <h2>Jason</h2></a>
+		<form action="<%=basePath%>/searchperson" method="get">
+		<input type="text" name="name"/><input type="submit" value="submit"/>
+		</form>
 </td></tr>
 </table>
 </div>

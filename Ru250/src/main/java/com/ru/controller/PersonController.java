@@ -2,8 +2,11 @@ package com.ru.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -80,9 +83,10 @@ public class PersonController
         return "person";
     }
     
-    @RequestMapping("/persons/{name}")
+    @RequestMapping(value = "/searchperson", method = RequestMethod.GET)
     @ResponseBody
-    public List searchPerson(@PathVariable("name") String name, Model model){
+    public List searchPerson(HttpServletRequest request){
+    	String name = request.getParameter("name");
     	List<Person> list = personService.searPersonName(name);
         return list;
     }
