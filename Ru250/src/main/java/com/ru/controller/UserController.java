@@ -1,11 +1,13 @@
 package com.ru.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,19 +48,26 @@ public class UserController {
 	}
 	
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
-	public String login (@ModelAttribute("userinfo") User u,HttpServletRequest request){
+	public String login (@ModelAttribute("userinfo") User u,HttpServletRequest request, ModelMap modelMap){
 		User user = new User();
 		String userName = request.getParameter("userName");
     	String pwd = request.getParameter("pwd");
     	String newPwd = MD5.getMD5(pwd);
     	user = userService.login(userName, newPwd);
+    	
+    	HttpSession session = request.getSession();
+    	session.setAttribute("currentUser", user);
+
     	if(user!=null){
-    		return "mainpage";
+    		if(user.getUsertype()==1){
+    			return "mainpage_login";
+    		}else{
+    			return "mainpage_login_admin";
+    		}
     	}else{
     		return "error";
     	}
-//    	request.getSession().setAttribute("sessionname",userName);     //用Session保存用户名
-//    	request.getSession().setAttribute("sessionpwd",pwd);   
+
 		
 	}
 

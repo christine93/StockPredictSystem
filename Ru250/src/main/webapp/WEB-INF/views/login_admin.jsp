@@ -233,5 +233,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 jQuery('#'+id).addClass('visible');
 			}
 		</script>
+		
+		<script type="text/javascript">
+
+    </script>
 </body>
 </html>
