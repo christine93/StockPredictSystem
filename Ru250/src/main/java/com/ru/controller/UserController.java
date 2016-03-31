@@ -36,15 +36,21 @@ public class UserController {
 	public String addUser(@ModelAttribute("userinfo") User u,HttpServletRequest request){
 		
     	String userName = request.getParameter("userName");
-    	String pwd = request.getParameter("pwd");
-    	String newPwd = MD5.getMD5(pwd);
     	String email = request.getParameter("email");
-    	if(userService.isUsernameExist(userName)||userService.isEmailExist(email)){
-    		return "error";
+    	String pwd = request.getParameter("pwd");
+    	String repwd = request.getParameter("repwd");
+    	if(pwd.equals(repwd)){
+	    	String newPwd = MD5.getMD5(pwd);
+	    	
+	    	if(userService.isUsernameExist(userName)||userService.isEmailExist(email)){
+	    		return "error";
+	    	}else{
+	    		this.userService.addUser(userName, email, newPwd);
+	    		return "redirect:/login_admin";
+			}
     	}else{
-    		this.userService.addUser(userName, email, newPwd);
-    		return "redirect:/login_admin";
-		}
+    		return "error";
+    	}
 	}
 	
 	@RequestMapping(value= "/login", method = RequestMethod.POST)
@@ -67,9 +73,16 @@ public class UserController {
     	}else{
     		return "error";
     	}
-
-		
+    }
+	
+	@RequestMapping(value= "/logout", method = RequestMethod.POST)
+	public String logout (@ModelAttribute("userinfo") User u,HttpServletRequest request, ModelMap modelMap){
+		User user = new User();
+    	HttpSession session = request.getSession();
+    	session.getAttribute("currentUser");
+    	session.removeAttribute("currentUser");
+		return "index";
+	
 	}
-
 
 }

@@ -447,7 +447,8 @@ User u = (User) session.getAttribute("currentUser");
 							"class" : "btn btn-danger btn-xs",
 					click: function() {
 						$( this ).dialog( "close" );
-						window.location.href="index.html";}
+						window.location.href="/Ru250";
+					}
 
 					},{
 					html: "<i class='icon-remove bigger-110'></i>&nbsp; Cancel",

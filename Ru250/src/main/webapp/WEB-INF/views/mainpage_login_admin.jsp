@@ -81,7 +81,7 @@ User u = (User) session.getAttribute("currentUser");
 								<li class="divider"></li>
 
 								<li id="logout">
-									<a href="#">
+									<a href="<%=basePath%>/logout">
 										<i class="icon-off"></i>
 										Logout
 									</a>
@@ -145,7 +145,7 @@ User u = (User) session.getAttribute("currentUser");
 
 					<ul class="nav nav-list">
 						<li id="Stock" class="active">
-							<a id="stock" href="index_login_admin.html">
+							<a id="stock" href="#">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> Stock </span>
 							</a>
@@ -252,7 +252,9 @@ User u = (User) session.getAttribute("currentUser");
 		
 		
 		jQuery(function($) {
-			
+			$("#stock").on('click',function(){
+				location.reload();
+			});
 			$( "#configuration" ).on('click', function(e) {
 				e.preventDefault();
 				$( "#edit" ).removeClass('hide').dialog({
@@ -292,7 +294,8 @@ User u = (User) session.getAttribute("currentUser");
 								"class" : "btn btn-danger btn-xs",
 						click: function() {
 							$( this ).dialog( "close" );
-							window.location.href="login_admin.html";}
+							window.location.href="/Ru250";
+							}
 
 						},{
 						html: "<i class='icon-remove bigger-110'></i>&nbsp; Cancel",

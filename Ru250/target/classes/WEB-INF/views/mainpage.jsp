@@ -134,7 +134,7 @@
 
 					<ul class="nav nav-list">
 						<li id="mainpage" class="active">
-							<a id="home" href="index.html">
+							<a id="home" href="#">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> Home </span>
 							</a>
@@ -346,7 +346,7 @@
 						//clearAndSetBread("Home");
 						/*active*/
 						clearAndSetActiveStates($(this));
-						//$("#main").load("upload.jsp");
+						location.reload();
 						
 						
 			});
