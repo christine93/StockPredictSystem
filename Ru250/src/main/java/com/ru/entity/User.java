@@ -18,7 +18,7 @@ public class User {
 	private String userpwd;
 	private String email;
 	private int usertype;
-	
+
 	public int getId() {
 		return id;
 	}

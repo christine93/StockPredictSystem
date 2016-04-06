@@ -17,22 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         .tg .tg-4eph{background-color:#f9f9f9}
     </style>
     
-    <script type="text/javascript">
-    var url="/persons/${person.id}";
-    $.ajax( {
-    url : url,
-    type : "POST", 
-    dataType:"json",
-    contentType:'application/json;charset=UTF-8',
-    data:JSON.stringify({userId:'1',userName:'hello',password:'test',credits:'2',lastIp:'',lastVisit:'1986-05-27'}),
-    success : function(data) {
-        alert(data.userName);   
-   
-    },error:function(e){
-	    alert("err");
-	    }}
-    )
-    </script>
+    
 </head>
 <body>
 <div align="center">
@@ -122,10 +107,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <table>
 <tr><td>
 		<form action="<%=basePath%>/searchperson" method="get">
-		<input type="text" name="name"/><input type="submit" value="submit"/>
+		<input type="text" name="name"/><input id="profile" type="submit" value="submit"/>
 		</form>
 </td></tr>
 </table>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+/*     $( "#profile" ).on('click', function() {
+    var url="http://localhost:8080/Ru250/searchperson?name=1";
+    $.ajax( {
+    url : url,
+    type : "GET", 
+    dataType:"json",
+    contentType:'application/json;charset=UTF-8',
+    success : function(data) {
+        alert(data.id);   
+    },
+    error:function(e){
+	    alert("err");
+	    }}
+    );
+    }); */
+    </script>
 </html>

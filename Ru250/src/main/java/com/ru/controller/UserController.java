@@ -29,8 +29,7 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
-	
+    
 	//Register
 	@RequestMapping(value= "/addUser", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("userinfo") User u,HttpServletRequest request){

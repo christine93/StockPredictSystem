@@ -88,7 +88,15 @@ public class PersonController
     public List searchPerson(HttpServletRequest request){
     	String name = request.getParameter("name");
     	List<Person> list = personService.searPersonName(name);
-        return list;
+        return list;        
     }
+    
+//    @RequestMapping(value = "/searchperson", method = RequestMethod.GET)
+//    @ResponseBody
+//    public Person searchPerson(HttpServletRequest request){
+//    	String name = request.getParameter("name");
+//    	List<Person> list = personService.searPersonName(name);
+//        return list.get(0);
+//    }
 	
 }
