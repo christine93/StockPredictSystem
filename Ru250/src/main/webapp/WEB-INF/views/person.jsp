@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 <script type="text/javascript">
-/*     $( "#profile" ).on('click', function() {
+    $( "#profile" ).on('click', function() {
     var url="http://localhost:8080/Ru250/searchperson?name=1";
     $.ajax( {
     url : url,
@@ -130,6 +130,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    alert("err");
 	    }}
     );
-    }); */
+    }); 
     </script>
 </html>

@@ -228,13 +228,16 @@
 						</ul><!-- .breadcrumb -->
 
 					</div>
+					<div id="stock" style="display:none;">
+						<div id="container4" style="height: 100%; width: 100%"></div>
+					</div>
 
 					<div id="main" class="page-content">
                     	<div class="row">
                         	<div class="search"  style="margin-left:380px;">
                             <span class="s_con"><input type="text" class="content" placeholder="Search"><i class="clear"></i>
                             </span>
-                            <span class="s_btn" id="search_button">Search</span> 
+                            <span class="s_btn" id="search_button" onclick='hideContent()'>Search</span> 
                             </div>
                         </div>
 						<div class="row" style="margin-top:10px;margin-left:170px;width:75%">
@@ -298,6 +301,13 @@
 		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+		
+		function hideContent(){
+			var content =document.getElementById("main");
+			content.style.display='none';
+			var stock =  document.getElementById("stock");
+			stock.style.display='block';
+		}
 		
 		function del(n){
 				var s=document.getElementById('process');
@@ -390,10 +400,10 @@
 						
 			});
 			
-			$("#search_button").on('click', function(){
+/* 			$("#search_button").on('click', function(){
 				document.getElementById("main").innerHTML='<iframe src="highchart.html" width="100%" height="600" scrolling="yes" />';
 	
-			});
+			}); */
 		});
 		
 $(function () {
@@ -496,7 +506,31 @@ $(function () {
     });
 
 });
+$(function () {
+	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
+    // Create the chart
+    $('#container4').highcharts('StockChart', {
 
+
+        rangeSelector : {
+            selected : 1
+        },
+
+        title : {
+            text : 'APPLE Stock Price'
+        },
+
+        series : [{
+            name : 'APPLE',
+            data : data,
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+});
+
+});
         </script>
 </body>
 </html>

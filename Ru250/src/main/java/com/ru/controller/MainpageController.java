@@ -18,4 +18,14 @@ public class MainpageController {
     public String newPage(Model model) {
         return "login_admin";
     }
+	
+	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
+    public String aboutUs(Model model) {
+        return "aboutus";
+    }
+	
+	@RequestMapping(value = "/include", method = RequestMethod.GET)
+    public String include(Model model) {
+        return "include";
+    }
 }

@@ -53,6 +53,8 @@ public class PersonController
         return "NewFile";
     }
      
+	
+
     //For add and update person both
     @RequestMapping(value= "/person/add", method = RequestMethod.POST)
     public String addPerson(@ModelAttribute("person") Person p){
@@ -83,20 +85,20 @@ public class PersonController
         return "person";
     }
     
-    @RequestMapping(value = "/searchperson", method = RequestMethod.GET)
-    @ResponseBody
-    public List searchPerson(HttpServletRequest request){
-    	String name = request.getParameter("name");
-    	List<Person> list = personService.searPersonName(name);
-        return list;        
-    }
-    
 //    @RequestMapping(value = "/searchperson", method = RequestMethod.GET)
 //    @ResponseBody
-//    public Person searchPerson(HttpServletRequest request){
+//    public List searchPerson(HttpServletRequest request){
 //    	String name = request.getParameter("name");
 //    	List<Person> list = personService.searPersonName(name);
-//        return list.get(0);
+//        return list;        
 //    }
+    
+    @RequestMapping(value = "/searchperson", method = RequestMethod.GET)
+    @ResponseBody
+    public Person searchPerson(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	List<Person> list = personService.searPersonName(name);
+        return list.get(0);
+    }
 	
 }
