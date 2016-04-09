@@ -1,7 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
@@ -11,7 +8,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<head>
 		<meta charset="utf-8" />
 		<title>Login</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<!-- basic styles -->
 
@@ -22,13 +18,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
 
-		<!-- page specific plugin styles -->
-
 		<!-- ace styles -->
-
+		<link rel="stylesheet" href="assets/css/jquery.gritter.css">
 		<link rel="stylesheet" href="assets/css/ace.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+		
+		
+		
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- page specific plugin styles -->
+<!-- jqgrid -->
+
+
+		
 		<!--[if lte IE 8]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
@@ -41,6 +45,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="assets/js/html5shiv.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+		
+		<!-- basic js -->
+		
 	</head>
 
 	<body class="login-layout">
@@ -70,9 +77,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 											<div class="space-6"></div>
 
-											<form action="<%=basePath%>/login" method="post">
-												<fieldset>
-													<label class="block clearfix">
+<%-- 											<form action="<%=basePath%>/login" method="post">
+ --%>
+ 												<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" class="form-control" name="userName" id="username" placeholder="username" />
 															<i class="icon-user"></i>
@@ -94,17 +101,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+														<button id="log" type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="icon-key"></i>
 															Login
 														</button>
 													</div>
 
 													<div class="space-4"></div>
-												</fieldset>
-											</form>
-
-											
+<%-- 											</form>
+ --%>											
 										</div><!-- /widget-main -->
 
 										<div class="toolbar clearfix" style="align:center">
@@ -198,36 +203,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div><!-- /.row -->
 			</div>
 		</div><!-- /.main-container -->
-
-		
-		<!-- basic scripts -->
-
-
-
-		<!--[if IE]>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<![endif]-->
-
-		<!--[if !IE]> -->
-
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
-		</script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script type="text/javascript">
- window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
-</script>
-<![endif]-->
-
+<!-- 		<input id="gritter-light" checked="" type="checkbox" class="ace ace-switch ace-switch-5" />
+ -->		
 		<script type="text/javascript">
 			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 
 		<!-- inline scripts related to this page -->
-
+		<script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
+		<script src="assets/js/jquery.gritter.min.js"></script>
 		<script type="text/javascript">
 			function show_box(id) {
 			 jQuery('.widget-box.visible').removeClass('visible');
@@ -236,7 +220,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</script>
 		
 		<script type="text/javascript">
+		function error(e) {
+			$.gritter.add({
+				title : 'This is a warning notification',
+				text : e,
+				time : '3000',
+				class_name : 'gritter-error gritter-center'
+			});
+	
+			return false;
+		}
 
+		$( "#log" ).click(function(){
+			var name=$("#username").val();
+		 	var pwd=$("#pwd").val();
+		 	alert(name);
+		 	var regx=/^\w{4,20}$/;
+		 	var a=1;
+		 	var b=1;
+		 	
+		 	if(pwd==""){
+		 		error("Please enter you password!");
+		 		b=0;
+		 	}
+
+			if((a&&b)==1){
+				var url="http://localhost:8080/Ru250/login?userName="+name+"&pwd="+pwd;
+				$.ajax({
+					type : "GET", 
+					url:url,
+				    dataType:"json",
+				    contentType:'application/json;charset=UTF-8',
+				    success : function(user) {
+				    	alert(user.usertype);
+				        if(usertype=""){
+				        	alert("user isn't exist or password is wrong!")
+				        }else{
+				        	if(user.usertype=="2"){
+				        		alert("right");
+				        		window.location='mainpage_login_admin';
+				        	}else{
+				        		alert("wrong");
+			        			window.location='mainpage_login';
+				        	}
+				        }
+				    }
+				   });
+					 
+		  	}	 /*  */
+		});
     	</script>
 </body>
 </html>

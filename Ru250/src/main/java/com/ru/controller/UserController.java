@@ -52,8 +52,9 @@ public class UserController {
     	}
 	}
 	
-	@RequestMapping(value= "/login", method = RequestMethod.POST)
-	public String login (@ModelAttribute("userinfo") User u,HttpServletRequest request, ModelMap modelMap){
+	@RequestMapping(value= "/login", method = RequestMethod.GET)
+	@ResponseBody
+	public User login (@ModelAttribute("userinfo") User u,HttpServletRequest request, ModelMap modelMap){
 		User user = new User();
 		String userName = request.getParameter("userName");
     	String pwd = request.getParameter("pwd");
@@ -62,16 +63,7 @@ public class UserController {
     	
     	HttpSession session = request.getSession();
     	session.setAttribute("currentUser", user);
-
-    	if(user!=null){
-    		if(user.getUsertype()==1){
-    			return "mainpage_login";
-    		}else{
-    			return "mainpage_login_admin";
-    		}
-    	}else{
-    		return "error";
-    	}
+    	return user;
     }
 	
 	@RequestMapping(value= "/logout", method = RequestMethod.POST)

@@ -106,7 +106,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </h2>
 <table>
 <tr><td>
-		<form action="<%=basePath%>/searchperson" method="get">
+<%-- 		<form action="<%=basePath%>/searchperson" method="get">
+ --%>		<form>
 		<input type="text" name="name"/><input id="profile" type="submit" value="submit"/>
 		</form>
 </td></tr>

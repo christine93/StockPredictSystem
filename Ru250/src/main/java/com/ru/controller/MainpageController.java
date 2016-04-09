@@ -19,6 +19,16 @@ public class MainpageController {
         return "login_admin";
     }
 	
+	@RequestMapping(value = "/mainpage_login_admin", method = RequestMethod.GET)
+    public String mainpageAdmin(Model model) {
+        return "mainpage_login_admin";
+    }
+	
+	@RequestMapping(value = "/mainpage_login", method = RequestMethod.GET)
+    public String mainpage(Model model) {
+        return "mainpage_login";
+    }
+	
 	@RequestMapping(value = "/aboutus", method = RequestMethod.GET)
     public String aboutUs(Model model) {
         return "aboutus";
