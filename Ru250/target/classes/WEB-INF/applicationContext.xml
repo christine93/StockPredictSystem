@@ -39,6 +39,8 @@
             <list>
                 <value>com.ru.entity.Person</value>
                 <value>com.ru.entity.User</value>
+                <value>com.ru.entity.Stock</value>
+           
             </list>
         </property>
         <property name="hibernateProperties">
@@ -64,9 +66,16 @@
     </bean>
     
     <bean id="userService" class="com.ru.service.UserServiceImpl">
-            <property name="userDAO" ref="userDAO"></property>
+        <property name="userDAO" ref="userDAO"></property>
     </bean>
     
+    <bean id="stockDAO" class="com.ru.dao.StockDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+    <bean id="stockService" class="com.ru.service.StockServiceImpl">
+        <property name="stockDAO" ref="stockDAO"></property>
+    </bean> 
     <tx:annotation-driven transaction-manager="transactionManager"/>
      
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

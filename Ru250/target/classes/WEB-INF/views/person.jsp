@@ -118,14 +118,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript">
     $( "#profile" ).on('click', function() {
-    var url="http://localhost:8080/Ru250/searchperson?name=1";
+    var url="http://localhost:8080/Ru250/searchstock?name=GOOG";
+    	//var url="http://localhost:8080/Ru250/searchperson?name=1";
     $.ajax( {
     url : url,
     type : "GET", 
     dataType:"json",
     contentType:'application/json;charset=UTF-8',
     success : function(data) {
-        alert(data.id);   
+        alert(data);   
     },
     error:function(e){
 	    alert("err");

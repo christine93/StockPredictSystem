@@ -517,7 +517,7 @@ $(function () {
         },
 
         title : {
-            text : 'APPLE Stock Price'
+            text : ' Stock Price'
         },
 
         series : [{
