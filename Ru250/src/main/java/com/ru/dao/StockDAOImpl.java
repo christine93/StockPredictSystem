@@ -25,13 +25,10 @@ public class StockDAOImpl implements StockDAO{
 	public List<Stock> searchStockByName(String stock) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		Query q = session.createQuery("select date,value from Stock where stock like ?");
+		Query q = session.createQuery("from Stock where stock like ?");
 		q.setParameter(0, stock);
 		List<Stock> list = q.list();
-		for(Stock s : list){
-			String str = s.getDate();
-			//Date date = 
-		}
+		
 		if(!list.isEmpty()){
 			return list;
 			}
