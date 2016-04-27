@@ -6,5 +6,6 @@ import com.ru.entity.Stock;
 
 public interface StockService {
 
-	public List<Stock> searchStock(String stock);
+	public List<Stock> searchStockByName(String stock);
+//    public List<Stock> listStock();
 }

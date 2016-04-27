@@ -8,9 +8,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ru.entity.Person;
 import com.ru.entity.Stock;
-import com.ru.entity.User;
 
 public class StockDAOImpl implements StockDAO{
 
@@ -24,12 +22,16 @@ public class StockDAOImpl implements StockDAO{
 
 	
 	@Override
-	public List<Stock> searchStock(String stock) {
+	public List<Stock> searchStockByName(String stock) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		Query q = session.createQuery("from Stock where stock like ?");
+		Query q = session.createQuery("select date,value from Stock where stock like ?");
 		q.setParameter(0, stock);
 		List<Stock> list = q.list();
+		for(Stock s : list){
+			String str = s.getDate();
+			//Date date = 
+		}
 		if(!list.isEmpty()){
 			return list;
 			}
@@ -37,4 +39,17 @@ public class StockDAOImpl implements StockDAO{
 			return null;
 	}
 	
+//	public List<Stock> listStock() {
+//		// TODO Auto-generated method stub
+//		Session session = this.sessionFactory.getCurrentSession();
+//		Query q = session.createQuery("select * from Stock where stock like GOOG");
+//		List<Stock> list = q.list();
+//		
+//		if(!list.isEmpty()){
+//			return list;
+//			}
+//		else
+//			return null;
+//	}
+
 }

@@ -16,11 +16,19 @@ public class StockServiceImpl implements StockService {
 	{
 		this.stockDAO = stockDAO;
 	}
+	
 	@Override
 	@Transactional
-	public List<Stock> searchStock(String stock) {
+	public List<Stock> searchStockByName(String stock) {
 		// TODO Auto-generated method stub
-		return stockDAO.searchStock(stock);
+		return stockDAO.searchStockByName(stock);
 	}
+
+//	@Override
+//	public List<Stock> listStock() {
+//		// TODO Auto-generated method stub
+//		return stockDAO.listStock();
+//	}
+
 	
 }

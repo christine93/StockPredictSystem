@@ -37,22 +37,18 @@ public class StockController {
 	
 	@RequestMapping(value = "/searchstock", method = RequestMethod.GET)
     @ResponseBody
-    public String searchPerson(HttpServletRequest request){
+    public List<Stock> searchStockByName(HttpServletRequest request){
     	String name = request.getParameter("name");
-    	List<Stock> stock = stockService.searchStock(name);
-    	//String result = null;
-    	StringBuffer result = new StringBuffer("");
-    	for(int i=0;i<stock.size();i++){
-    		
-    		result.append("[");
-    		result.append(stock.get(i).getTime());
-    		result.append(",");
-    		result.append(stock.get(i).getValue());
-    		result.append("],");
-    		
-    	}
-    	String r = result.toString();
-    	r = "["+r.substring(0, result.length()-1)+"]";
-        return r;
+    	List<Stock> stock = stockService.searchStockByName(name);
+
+    	
+        return stock;
     }
+	
+//	@RequestMapping(value = "/liststock", method = RequestMethod.GET)
+//    @ResponseBody
+//    public List<Stock> listStock(HttpServletRequest request){
+//    	List<Stock> stock = stockService.listStock();    	
+//        return stock;
+//    }
 }

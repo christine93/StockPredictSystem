@@ -235,22 +235,23 @@
 					<div id="main" class="page-content">
                     	<div class="row">
                         	<div class="search"  style="margin-left:380px;">
-                            <span class="s_con"><input type="text" class="content" placeholder="Search"><i class="clear"></i>
+                            <span class="s_con"><input id="stockname" type="text" class="content" placeholder="Search"><i class="clear"></i>
                             </span>
                             <span class="s_btn" id="search_button" onclick='hideContent()'>Search</span> 
                             </div>
                         </div>
 						<div class="row" style="margin-top:10px;margin-left:170px;width:75%">
                             <div class="col-xs-6">
-                            <label>
-                                <input name="form-field-checkbox" type="checkbox" class="ace">							                            <span class="lbl"> search by stock name</span>
-                            </label>
-                            </div>
-                            <div class="col-xs-6">
-                            <label>
-                                <input name="form-field-checkbox" type="checkbox" class="ace">
-                                <span class="lbl"> search by stock number</span>
-                            </label>
+	                            <label>
+	                                <input id="radio" name="form-field-checkbox" type="radio" class="ace" value="byName">							                            
+	                                <span class="lbl"> search by stock name</span>
+	                            </label>
+	                            </div>
+	                            <div class="col-xs-6">
+	                            <label>
+	                                <input id="radio" name="form-field-checkbox" type="radio" class="ace" value="byNum">
+	                                <span class="lbl"> search by stock number</span>
+	                            </label>
                             </div>
                         </div>  
                         <div class="row">
@@ -303,10 +304,20 @@
 		<script type="text/javascript">
 		
 		function hideContent(){
+			var name = $("#stockname").val();
+			var radio = $("#radio").val();
+			/* if (radio=="byName"){
+				
+			}else if(radio=="byNum"){
+				
+			}else {
+				alert("Please select a way to search!")
+			} */
 			var content =document.getElementById("main");
 			content.style.display='none';
 			var stock =  document.getElementById("stock");
 			stock.style.display='block';
+			
 		}
 		
 		function del(n){
