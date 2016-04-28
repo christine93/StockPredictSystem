@@ -52,4 +52,22 @@ public class StockDAOImpl implements StockDAO{
 //			return null;
 //	}
 
+	@Override
+	public void insertStock(Stock stock) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(stock);
+//		String sql = "insert into stock (stock , value , volume , open , high , low , date , time) values (?,?,?,?,?,?,?,?)";
+//		Query q = session.createSQLQuery(sql);
+//		q.setParameter(0, stock.getStock());
+//		q.setParameter(1, stock.getValue());
+//		q.setParameter(2, stock.getVolume());
+//		q.setParameter(3, stock.getOpen());
+//		q.setParameter(4, stock.getHigh());
+//		q.setParameter(5, stock.getLow());
+//		q.setParameter(6, stock.getDate());
+//		q.setParameter(7, stock.getTime());
+//		q.executeUpdate();
+        log.info("Stock saved successfully, stock Details="+stock);
+	}
 }
