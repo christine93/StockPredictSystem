@@ -255,18 +255,13 @@
                             </div>
                         </div>  
                         <div class="row">
-                        <div class="col-xs-3">
+                        <div class="col-xs-6">
                         <div id="container" style="height: 400px; min-width: 310px"></div>
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col-xs-6">
                         <div id="container1" style="height: 400px; min-width: 310px"></div>
                         </div>
-                        <div class="col-xs-3">
-                        <div id="container2" style="height: 400px; min-width: 310px"></div>
-                        </div>
-                        <div class="col-xs-3">
-                        <div id="container3" style="height: 400px; min-width: 310px"></div>
-                        </div>
+                        
                         </div>          
                             
 					</div><!-- /.page-content -->
@@ -418,7 +413,7 @@
 		});
 		
 $(function () {
-		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
+		$.getJSON('http://localhost:8080/Ru250/searchstock?name=GOOG', 				function (data) {
         // Create the chart
         $('#container').highcharts('StockChart', {
 
@@ -428,11 +423,11 @@ $(function () {
             },
 
             title : {
-                text : 'AAPL Stock Price'
+                text : 'Google Stock Price'
             },
 
             series : [{
-                name : 'AAPL',
+                name : 'GOOG',
                 data : data,
                 tooltip: {
                     valueDecimals: 2
@@ -443,7 +438,7 @@ $(function () {
 
 });
 $(function () {
-		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
+		$.getJSON('http://localhost:8080/Ru250/searchstock?name=MSFT', 				function (data) {
         // Create the chart
         $('#container1').highcharts('StockChart', {
 
@@ -453,11 +448,11 @@ $(function () {
             },
 
             title : {
-                text : 'GOOGLE Stock Price'
+                text : 'Microsoft Stock Price'
             },
 
             series : [{
-                name : 'GOOGLE',
+                name : 'MSFT',
                 data : data,
                 tooltip: {
                     valueDecimals: 2
@@ -467,56 +462,7 @@ $(function () {
     });
 
 });
-$(function () {
-		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
-        // Create the chart
-        $('#container2').highcharts('StockChart', {
 
-
-            rangeSelector : {
-                selected : 1
-            },
-
-            title : {
-                text : 'APPLE Stock Price'
-            },
-
-            series : [{
-                name : 'APPLE',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
-    });
-
-});
-$(function () {
-		$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
-        // Create the chart
-        $('#container3').highcharts('StockChart', {
-
-
-            rangeSelector : {
-                selected : 1
-            },
-
-            title : {
-                text : 'TWITTER Stock Price'
-            },
-
-            series : [{
-                name : 'TWITTER',
-                data : data,
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
-    });
-
-});
 $(function () {
 	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
     // Create the chart

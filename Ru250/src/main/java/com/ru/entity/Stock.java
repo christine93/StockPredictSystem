@@ -17,12 +17,12 @@ public class Stock {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String stock;
-	private String value;
+	private float value;
 	private String volume;
 	private String open;
 	private String high;
 	private String low;
-	private String date;
+	private long date;
 	private String time;
 	public int getId() {
 		return id;
@@ -36,11 +36,11 @@ public class Stock {
 	public void setStock(String stock) {
 		this.stock = stock;
 	}
-	public String getValue() {
+	public float getValue() {
 		return value;
 	}
 	public void setValue(String value) {
-		this.value = value;
+		this.value = Float.parseFloat(value);
 	}
 	public String getVolume() {
 		return volume;
@@ -66,11 +66,11 @@ public class Stock {
 	public void setLow(String low) {
 		this.low = low;
 	}
-	public String getDate() {
+	public long getDate() {
 		return date;
 	}
 	public void setDate(String date) {
-		this.date = date;
+		this.date = Long.parseLong(date);
 	}
 	public String getTime() {
 		return time;
