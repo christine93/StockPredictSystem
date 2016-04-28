@@ -10,4 +10,6 @@ public interface StockDAO {
 //	public List<Stock> listStock();
 
 	public void insertStock(Stock stock);
+	
+	public boolean checkExs(Stock stock);
 }

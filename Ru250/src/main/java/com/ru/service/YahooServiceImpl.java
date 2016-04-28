@@ -19,7 +19,10 @@ public class YahooServiceImpl implements YahooService{
 	@Transactional
 	public void insertStock(Stock stock) {
 		// TODO Auto-generated method stub
-		stockDAO.insertStock(stock);
+		boolean check = stockDAO.checkExs(stock);
+		if(!check){
+			stockDAO.insertStock(stock);
+		}
 	}
 
 }

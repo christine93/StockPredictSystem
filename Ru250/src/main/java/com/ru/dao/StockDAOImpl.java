@@ -67,4 +67,18 @@ public class StockDAOImpl implements StockDAO{
 //		q.executeUpdate();
         log.info("Stock saved successfully, stock Details="+stock);
 	}
+
+
+	@Override
+	public boolean checkExs(Stock stock) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String sql ="from Stock where stock =? and date = ? and time =?";
+		Query q = session.createQuery(sql);
+		q.setParameter(0, stock.getStock());
+		q.setParameter(1, stock.getDate());
+		q.setParameter(2, stock.getTime());
+		List<Stock> list = q.list();
+		return list.size()==0?false:true;
+	}
 }
