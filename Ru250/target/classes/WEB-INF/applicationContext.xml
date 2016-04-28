@@ -40,6 +40,7 @@
                 <value>com.ru.entity.Person</value>
                 <value>com.ru.entity.User</value>
                 <value>com.ru.entity.Stock</value>
+                <value>com.ru.entity.Hstock</value>
            
             </list>
         </property>
@@ -75,6 +76,14 @@
     
     <bean id="stockService" class="com.ru.service.StockServiceImpl">
         <property name="stockDAO" ref="stockDAO"></property>
+    </bean> 
+    
+    <bean id="hstockDAO" class="com.ru.dao.HstockDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </bean>
+    
+    <bean id="hstockService" class="com.ru.service.HstockServiceImpl">
+        <property name="hstockDAO" ref="hstockDAO"></property>
     </bean> 
     <tx:annotation-driven transaction-manager="transactionManager"/>
      
