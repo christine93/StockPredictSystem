@@ -6,6 +6,10 @@ import com.ru.entity.Hstock;
 
 public interface HstockService {
 
-	List<Hstock> searchStockByName(String stock);
+	public List<Hstock> searchStockByName(String stock);
+
+	public String getAverage(String stock);
+
+	public String getLowest(String stock);
 
 }

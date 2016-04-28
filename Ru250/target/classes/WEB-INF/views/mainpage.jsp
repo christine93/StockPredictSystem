@@ -236,8 +236,8 @@
 					<div id="stock" style="display:none;">
 						<div id="container4" style="height: 100%; width: 100%"></div>
 						<div>The highest stock price of <span id="stockName"></span> in the last ten days:<span id="highest"></span></div>
-						<div>Average stock price of <span id="stockName1"></span> in the latest one year:</div>
-						<div>Lowest stock price for <span id="stockName2"></span> in the latest one year:</div>
+						<div>Average stock price of <span id="stockName1"></span> in the latest one year:<span id="avg"></span></div>
+						<div>Lowest stock price for <span id="stockName2"></span> in the latest one year:<span id="lowest"></span></div>
 					</div>
 
 					<div id="main" class="page-content">
@@ -341,8 +341,31 @@
 			
 			/*Highest value*/
 			/*Average stock price in the latest one year*/
+			var url2 = "http://localhost:8080/Ru250/avgstock?name="+name;
+			$.ajax({
+				type : "GET", 
+				url:url2,
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	$( "#avg" ).text( data );
+			        }
+			    
+			   });
+			
 			/*Lowest stock price in the latest one year*/
-		}
+			var url3 = "http://localhost:8080/Ru250/lowest?name="+name;
+			$.ajax({
+				type : "GET", 
+				url:url3,
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	$( "#lowest" ).text( data );
+			        }
+			    
+			   });
+			}
 		
 		function del(n){
 				var s=document.getElementById('process');

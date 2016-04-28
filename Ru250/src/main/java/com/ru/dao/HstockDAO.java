@@ -10,4 +10,8 @@ public interface HstockDAO {
 
 	public List<Hstock> getHighestTen(String stock);
 
+	public List<Hstock> getByStock(String stock);
+
+	public List<Hstock> getLowest(String stock);
+
 }

@@ -39,9 +39,29 @@ public class HstockDAOImpl implements HstockDAO{
 	public List<Hstock> getHighestTen(String stock){
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		Query q = session.createQuery("select top 5 * from Hstock group by ?");
+		Query q = session.createQuery("");
 		q.setParameter(0, stock);
 		List<Hstock> list = q.list();
 		return list;
 	}
+	
+	@Override
+	public List<Hstock> getLowest(String stock){
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Query q = session.createQuery("from Hstock where stock like ? order by close ");
+		q.setParameter(0, stock);
+		List<Hstock> list = q.list();
+		return list;
+	}
+	
+	@Override
+	public List<Hstock> getByStock(String stock){
+		Session session = this.sessionFactory.getCurrentSession();
+		Query q = session.createQuery("");
+		q.setParameter(0, stock);
+		List<Hstock> list = q.list();
+		return list;
+	}
+	
 }

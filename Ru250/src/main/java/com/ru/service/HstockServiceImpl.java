@@ -22,4 +22,26 @@ private HstockDAO hstockDAO;
 		// TODO Auto-generated method stub
 		return hstockDAO.searchStockByName(stock);
 	}
+	
+	@Override
+	@Transactional
+	public String getAverage(String stock){
+		
+		List<Hstock> list = hstockDAO.searchStockByName(stock);
+		double sum = 0;
+		for (int i = 0;i<list.size();i++){
+			sum = sum + list.get(i).getClose();
+		}
+		double avg = (sum)/list.size();
+		return String.format("%.2f", avg);
+	}
+	
+	@Override
+	@Transactional
+	public String getLowest(String stock){
+		
+		List<Hstock> list = hstockDAO.getLowest(stock);
+		double lowest = list.get(0).getClose();
+		return String.format("%.2f", lowest);
+	}
 }

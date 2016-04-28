@@ -35,4 +35,20 @@ private HstockService hstockService;
     	
         return hstock;
     }
+	
+	@RequestMapping(value = "/avgstock", method = RequestMethod.GET)
+    @ResponseBody
+    public String avg(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	String avg = hstockService.getAverage(name);
+        return avg;
+    }
+	
+	@RequestMapping(value = "/lowest", method = RequestMethod.GET)
+    @ResponseBody
+    public String low(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	String lowest = hstockService.getLowest(name);
+        return lowest;
+    }
 }
