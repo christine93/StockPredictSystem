@@ -92,10 +92,19 @@ public class StockDAOImpl implements StockDAO{
 	    String sql = "insert into stock (stock , value , volume , open , high , low , date , time) values ('"
 	    +stock.getStock()+"','"+stock.getValue()+"','"+ stock.getVolume()+"','"+stock.getOpen()+"','"+stock.getHigh()
 	    +"','"+stock.getLow()+"','"+stock.getDate()+"','"+stock.getTime()+"')";
-	    System.out.println(sql);
+	    
+	    String selectQ ="select * from stock where stock = '"+ stock.getStock()+ "' and date = '"+ stock.getDate()+ "' and time = '"+stock.getTime()+ "'";
+	    System.out.println(selectQ);
 	    try {
 	    	stmt = conn.createStatement();
-	    	stmt.executeUpdate(sql);
+	    	rs = stmt.executeQuery(selectQ);
+	    	boolean exist = false;
+	    	while(rs.next()){
+	    		exist=true;
+	    	}
+	    	if(!exist){
+		    	stmt.executeUpdate(sql);
+	    	}
 	    }catch (SQLException e){
 	        e.printStackTrace();
 	    } finally {
@@ -103,36 +112,6 @@ public class StockDAOImpl implements StockDAO{
 	      this.closeStatement(stmt);
 	      this.closeConnection(conn);
 	    }
-//		Session session = this.sessionFactory.getCurrentSession();
-//		session.save(stock);
-//		if (session.isOpen()) {
-//            try {
-//                session.getTransaction().commit();
-//            } catch (Exception ex) {
-//                try {
-//                    session.getTransaction().rollback();
-//                } catch (HibernateException e) {
-//                    // TODO Auto-generated catch block
-//                    // e.printStackTrace();
-//                }
-//            }
-//            try {
-//            	sessionFactory.close();
-//            } catch (Exception ex) {
-//            	ex.printStackTrace();
-//            }
-//		}
-//		String sql = "insert into stock (stock , value , volume , open , high , low , date , time) values (?,?,?,?,?,?,?,?)";
-//		Query q = session.createSQLQuery(sql);
-//		q.setParameter(0, stock.getStock());
-//		q.setParameter(1, stock.getValue());
-//		q.setParameter(2, stock.getVolume());
-//		q.setParameter(3, stock.getOpen());
-//		q.setParameter(4, stock.getHigh());
-//		q.setParameter(5, stock.getLow());
-//		q.setParameter(6, stock.getDate());
-//		q.setParameter(7, stock.getTime());
-//		q.executeUpdate();
         log.info("Stock saved successfully, stock Details="+stock);
 	}
 
