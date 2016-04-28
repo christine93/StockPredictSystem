@@ -19,10 +19,10 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-   <!-- <property name="url" value="jdbc:mysql://localhost:3306/test" />
-        <property name="username" value="root" />
-        <property name="password" value="root" /> -->
-        <property name="url" value="jdbc:mysql://dev.ce4btmr3auem.us-east-1.rds.amazonaws.com:3306/Test" />
+   <property name="url" value="jdbc:mysql://localhost:3306/test" />
+   <!-- <property name="username" value="root" />
+        <property name="password" value="admin" /> -->
+   		<property name="url" value="jdbc:mysql://dev.ce4btmr3auem.us-east-1.rds.amazonaws.com:3306/Test" />
         <property name="username" value="admin" />
         <property name="password" value="administrator" />
     </bean>
@@ -94,4 +94,5 @@
     <bean id="yahooService" class="com.ru.service.YahooServiceImpl">
         <property name="stockDAO" ref="stockDAO"></property>
     </bean> 
+
 </beans>

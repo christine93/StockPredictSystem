@@ -12,4 +12,6 @@ public interface StockDAO {
 	public void insertStock(Stock stock);
 	
 	public boolean checkExs(Stock stock);
+
+	public List<Double> getStockValue(String stockName);
 }

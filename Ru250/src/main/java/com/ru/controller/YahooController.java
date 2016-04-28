@@ -17,6 +17,8 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -40,11 +42,6 @@ import oauth.signpost.exception.OAuthMessageSignerException;
 @Controller
 public class YahooController extends HttpServlet {
 
-	static String AccessToken = "3440930777-FUeEnX9x9TZnvw4v19Cm50IccPlw13fgEgaoSxJ";
-	static String AccessSecret = "G2dnQVCr668pzRjQuUiYnWqm2NvJTFcYMHWCt2SXqOmrW";
-	static String ConsumerKey = "X6UlPyIaJxUYPLVZ8nIuSbfOT";
-	static String ConsumerSecret = "EqrNKTJO5qgVnOKbBhW2q3FbSAnW9B1rTqYm6Lck2YXtdECi1T";
-
 	public YahooController() {
 		super();
 	}
@@ -53,6 +50,6 @@ public class YahooController extends HttpServlet {
 		System.out.println("Start loading data from Yahoo...");
 		Timer timer = new Timer();
 		//thread starts 1 second after the server, and run every 60 seconds
-		timer.schedule(new DataLoader(), 1000, 60000);
+		timer.schedule(new DataLoader(), 1000, 5000);
 	}
 }

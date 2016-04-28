@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ru.algorithm.Launcher;
 import com.ru.dao.PersonDAO;
 import com.ru.dao.StockDAO;
 import com.ru.entity.Stock;
@@ -30,5 +31,13 @@ public class StockServiceImpl implements StockService {
 //		return stockDAO.listStock();
 //	}
 
-	
+	@Override
+	@Transactional
+	public List<Double> predictValueByStock(String stock, int dayToPredict) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getStockValue(stock);
+    	Launcher launcher = new Launcher();
+    	List<Double> result = launcher.launch(list, dayToPredict);
+		return result;
+	}
 }

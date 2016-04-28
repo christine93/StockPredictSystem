@@ -8,4 +8,7 @@ public interface StockService {
 
 	public List<Stock> searchStockByName(String stock);
 //    public List<Stock> listStock();
+	
+	//predict 
+	public List<Double> predictValueByStock(String stock, int dayToPredict);
 }

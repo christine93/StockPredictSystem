@@ -15,6 +15,8 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.ru.commons.StringHelper;
 import com.ru.entity.Stock;
+import com.ru.service.UserService;
 import com.ru.service.YahooService;
+import com.ru.service.YahooServiceImpl;
 
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
@@ -44,8 +48,6 @@ public class DataLoader extends java.util.TimerTask{
 	static String ConsumerSecret = "EqrNKTJO5qgVnOKbBhW2q3FbSAnW9B1rTqYm6Lck2YXtdECi1T";
 	
 	public void run(){
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
-		YahooService yahooService = (YahooService) ctx.getBean("yahooService");
 		List<String> stocks = new ArrayList();
 		stocks.add("GOOG");
 		stocks.add("AAPL");
@@ -58,11 +60,13 @@ public class DataLoader extends java.util.TimerTask{
 		stocks.add("INTC");
 		stocks.add("YHOO");
 		for(String stock : stocks){
-			loadData(stock, yahooService);
+			loadData(stock);
 		}
 	}
 	
-	private void loadData(String stock, YahooService yahooService) {
+	private void loadData(String stock) {
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
+//		YahooService yahooService = (YahooService) ctx.getBean("yahooService");
 		String content = null;
 		try {
 			content = this.getStock(stock);
@@ -89,7 +93,7 @@ public class DataLoader extends java.util.TimerTask{
 		s.setHigh(contents[6] + "");
 		s.setLow(contents[7] + "");
 		s.setVolume(contents[8] + "");
-		
+		YahooService yahooService = new YahooServiceImpl();
 		yahooService.insertStock(s);
 	}
 
