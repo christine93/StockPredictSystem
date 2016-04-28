@@ -22,13 +22,13 @@ public class Stock {
 	private String open;
 	private String high;
 	private String low;
-	private String date;
+	private long date;
 	private String time;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		id = id;
 	}
 	public String getStock() {
 		return stock;
@@ -66,11 +66,11 @@ public class Stock {
 	public void setLow(String low) {
 		this.low = low;
 	}
-	public String getDate() {
+	public long getDate() {
 		return date;
 	}
 	public void setDate(String date) {
-		this.date = date;
+		this.date = Long.parseLong(date);
 	}
 	public String getTime() {
 		return time;
