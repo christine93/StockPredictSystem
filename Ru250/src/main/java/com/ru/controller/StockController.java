@@ -55,6 +55,15 @@ public class StockController {
         return result;
     }
 	
+	@RequestMapping(value = "/highest", method = RequestMethod.GET)
+    @ResponseBody
+    public String getHighest(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	String result = "";
+    	
+        return result;
+    }
+	
 //	@RequestMapping(value = "/liststock", method = RequestMethod.GET)
 //    @ResponseBody
 //    public List<Stock> listStock(HttpServletRequest request){

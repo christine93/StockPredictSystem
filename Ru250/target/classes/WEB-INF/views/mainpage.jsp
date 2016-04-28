@@ -139,64 +139,69 @@
 								<span class="menu-text"> Home </span>
 							</a>
 						</li>
-						<!--
-						<li id="search">
-							<a id="search_stock" href="#">
-								<i class="icon-text-width"></i>
-								<span class="menu-text"> Search </span>
-							</a>
-						</li>
-
-						
-						<li id="faviorate">
-							<a id="faviorate_stock" href="#" class="dropdown-toggle">
-								<i class="icon-desktop"></i>
-								<span class="menu-text"> My Faviorate </span>
-
-								<b class="arrow icon-angle-down"></b>
-							</a>
-
-							<ul class="submenu">
-								<li>
-									<a href="#">
-										<i class="icon-double-angle-right"></i>
-										Stock 1
-									</a>
-								</li>
-
-								<li>
-									<a href="#">
-										<i class="icon-double-angle-right"></i>
-										Stock 2
-									</a>
-								</li>
-
-								<li>
-									<a href="#">
-										<i class="icon-double-angle-right"></i>
-										Stock 3
-									</a>
-								</li>
-
-							</ul>
-						</li>
-						
-						<li id="news">
-							<a id="news_view" href="#">
+						 
+						<li id="google" onclick="hideContent('GOOG')" >
+							<a href='#'>
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> News </span>
+								<span class="menu-text"> Google </span>
 							</a>
 						</li>
-
-						<li id="profile">
-							<a id="profile_modify" href="#">
+						<li id="microsoft" onclick="hideContent('MSFT')">
+							<a href="#">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> My Profile </span>
+								<span class="menu-text"> Microsoft </span>
 							</a>
 						</li>
-  -->                      
-                        <li id="about" >
-							<a id="about_us" href="#">
+						<li id="amazon" onclick="hideContent('AMZN')">
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> Amazon </span>
+							</a>
+						</li>
+						<li id="oracle" onclick="hideContent('ORCL')">
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> Oracle </span>
+							</a>
+						</li>
+						<li id="yahoo" onclick="hideContent('YHOO')">
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> Yahoo </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> About Us </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> About Us </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> About Us </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> About Us </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> About Us </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> About Us </span>
 							</a>
@@ -230,39 +235,30 @@
 					</div>
 					<div id="stock" style="display:none;">
 						<div id="container4" style="height: 100%; width: 100%"></div>
+						<div>The highest stock price of <span id="stockName"></span> in the last ten days:<span id="highest"></span></div>
+						<div>Average stock price of <span id="stockName1"></span> in the latest one year:<span id="avg"></span></div>
+						<div>Lowest stock price for <span id="stockName2"></span> in the latest one year:<span id="lowest"></span></div>
 					</div>
 
 					<div id="main" class="page-content">
-                    	<div class="row">
-                        	<div class="search"  style="margin-left:380px;">
+						<div class="search"  style="margin-left:380px;">
                             <span class="s_con"><input id="stockname" type="text" class="content" placeholder="Search"><i class="clear"></i>
                             </span>
                             <span class="s_btn" id="search_button" onclick='hideContent()'>Search</span> 
-                            </div>
-                        </div>
-						<div class="row" style="margin-top:10px;margin-left:170px;width:75%">
-                            <div class="col-xs-6">
-	                            <label>
-	                                <input id="radio" name="form-field-checkbox" type="radio" class="ace" value="byName">							                            
-	                                <span class="lbl"> search by stock name</span>
-	                            </label>
-	                            </div>
-	                            <div class="col-xs-6">
-	                            <label>
-	                                <input id="radio" name="form-field-checkbox" type="radio" class="ace" value="byNum">
-	                                <span class="lbl"> search by stock number</span>
-	                            </label>
-                            </div>
-                        </div>  
-                        <div class="row">
+                       	</div>
+
+                        <div class="row" style="margin-top:110px"> 
                         <div class="col-xs-6">
-                        <div id="container" style="height: 400px; min-width: 310px"></div>
+                        <div id="container" style="height: 400px; min-width: 310px">
+
+                        </div>
                         </div>
                         <div class="col-xs-6">
                         <div id="container1" style="height: 400px; min-width: 310px"></div>
                         </div>
                         
-                        </div>          
+                        </div>
+                        <div>The companies who have the average stock price lesser than the lowest of Google in the latest one year</div>          
                             
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
@@ -300,20 +296,76 @@
 		
 		function hideContent(){
 			var name = $("#stockname").val();
-			var radio = $("#radio").val();
-			/* if (radio=="byName"){
-				
-			}else if(radio=="byNum"){
-				
-			}else {
-				alert("Please select a way to search!")
-			} */
+
 			var content =document.getElementById("main");
 			content.style.display='none';
 			var stock =  document.getElementById("stock");
 			stock.style.display='block';
 			
 		}
+		
+		function hideContent(name){
+			//alert(name);
+			$( "#stockName" ).text( name );
+			$( "#stockName1" ).text( name );
+			$( "#stockName2" ).text( name );
+		    var url = "http://localhost:8080/Ru250/searchstock?name="+name;
+			
+		    $.getJSON(url, 				function (data) {
+		    	
+			    // Create the chart
+			    $('#container4').highcharts('StockChart', {
+
+
+			        rangeSelector : {
+			            selected : 1
+			        },
+
+			        title : {
+			            text : ' Stock Price'
+			        },
+
+			        series : [{
+			            name : 'APPLE',
+			            data : data,
+			            tooltip: {
+			                valueDecimals: 2
+			            }
+			        }]
+			    });
+			});
+			var content =document.getElementById("main");
+			content.style.display='none';
+			var stock =  document.getElementById("stock");
+			stock.style.display='block';
+			
+			/*Highest value*/
+			/*Average stock price in the latest one year*/
+			var url2 = "http://localhost:8080/Ru250/avgstock?name="+name;
+			$.ajax({
+				type : "GET", 
+				url:url2,
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	$( "#avg" ).text( data );
+			        }
+			    
+			   });
+			
+			/*Lowest stock price in the latest one year*/
+			var url3 = "http://localhost:8080/Ru250/lowest?name="+name;
+			$.ajax({
+				type : "GET", 
+				url:url3,
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	$( "#lowest" ).text( data );
+			        }
+			    
+			   });
+			}
 		
 		function del(n){
 				var s=document.getElementById('process');
@@ -342,19 +394,15 @@
 		function clearAndSetActiveStates(el) {
 		
 				// clear all active states first
-				$('#mainpage').removeClass("active");
-				$('#search').removeClass("active");
-				$('#news').removeClass("active");
-				$('#faviorate').removeClass("active");
-				$('#profile').removeClass("active");
-				$('#about').removeClass("active");
-				
+				$('#mainpage').removeClass("active");				
 				// set active state
 				el.parent().addClass("active");		
 		}
 		
 
-		
+		function hidecontent(){
+			
+		}
 		jQuery(function($) {
 			$("#home").on('click',function(){
 						
@@ -366,50 +414,7 @@
 						
 						
 			});
-			
-			
-			$("#faviorate_stock").on('click',function(){
-						
-						/*breadcrumbs*/
-						clearAndSetBread("My Faviorate");
-						/*active*/
-						clearAndSetActiveStates($(this));
-						//$("#main").load("upload.jsp");
-						
-			});
-			$("#news_view").on('click',function(){
-						
-						/*breadcrumbs*/
-						clearAndSetBread("News");
-						/*active*/
-						clearAndSetActiveStates($(this));
-						//$("#main").load("upload.jsp");
-						
-			});
-			$("#profile_modify").on('click',function(){
-						
-						/*breadcrumbs*/
-						clearAndSetBread("My Profile");
-						/*active*/
-						clearAndSetActiveStates($(this));
-						//$("#main").load("upload.jsp");
-						
-			});
-			$("#about_us").on('click',function(){
-						
-						/*breadcrumbs*/
-						clearAndSetBread("About Us");
-						/*active*/
-						clearAndSetActiveStates($(this));
-						//$("#main").load("upload.jsp");
-						document.getElementById("main").innerHTML='<iframe src="aboutus.html" width="100%" height="600" scrolling="yes" />';
-						
-			});
-			
-/* 			$("#search_button").on('click', function(){
-				document.getElementById("main").innerHTML='<iframe src="highchart.html" width="100%" height="600" scrolling="yes" />';
-	
-			}); */
+
 		});
 		
 $(function () {
@@ -463,31 +468,7 @@ $(function () {
 
 });
 
-$(function () {
-	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
-    // Create the chart
-    $('#container4').highcharts('StockChart', {
 
-
-        rangeSelector : {
-            selected : 1
-        },
-
-        title : {
-            text : ' Stock Price'
-        },
-
-        series : [{
-            name : 'APPLE',
-            data : data,
-            tooltip: {
-                valueDecimals: 2
-            }
-        }]
-    });
-});
-
-});
         </script>
 </body>
 </html>
