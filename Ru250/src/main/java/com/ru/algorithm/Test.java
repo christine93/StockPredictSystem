@@ -32,18 +32,18 @@ public class Test
 //        {
 //            e.printStackTrace();
 //        }
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
-		StockService sv = (StockService) ctx.getBean("stockService");
-    	List<Double> test = sv.predictValueByStock("GOOG", 5);
-        List<Double> result;
-        Launcher launcher = new Launcher();
-
-        // test is the input List of historical value
-        // result is the return List of prediction value
-        result = launcher.launch(test, 5);
-        for(Double i : test)
-        {
-            System.out.println(i);
-        }
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("WEB-INF/applicationContext.xml");
+//		StockService sv = (StockService) ctx.getBean("stockService");
+//    	List<Double> test = sv.predictValueByStock("GOOG", 5);
+//        List<Double> result;
+//        Launcher launcher = new Launcher();
+//
+//        // test is the input List of historical value
+//        // result is the return List of prediction value
+//        result = launcher.launch(test, 5);
+//        for(Double i : test)
+//        {
+//            System.out.println(i);
+//        }
     }
 }
