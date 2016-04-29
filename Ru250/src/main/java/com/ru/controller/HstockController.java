@@ -83,7 +83,7 @@ private HstockService hstockService;
 	
 	@RequestMapping(value = "/lowerthanGOOG", method = RequestMethod.GET)
     @ResponseBody
-    public String lower(HttpServletRequest request){
+    public String lower(){
 		String lower ="";
 		List<String> list = hstockService.getLower();
 		for (int i = 0;i<list.size();i++){

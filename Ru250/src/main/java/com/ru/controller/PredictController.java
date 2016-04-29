@@ -30,6 +30,19 @@ public class PredictController {
         return list;
     }
 	
+	@RequestMapping(value = "/avgAnn", method = RequestMethod.GET)
+	@ResponseBody
+    public double avgANN(HttpServletRequest request) {
+		String name = request.getParameter("name");
+		double sum = 0;
+		List<Double> list = stockService.predictValueByHStockANN(name, 10);
+		
+		for (int i= 0;i<list.size();i++){
+			sum = sum+list.get(i);
+		}
+        return sum/(list.size());
+    }
+	
 //	@RequestMapping(value = "/2", method = RequestMethod.POST)
 //    public List<Double> predictStockANN(@PathVariable("stock") String stock, @PathVariable("dayToPredict") int dayToPredict) {
 //		List<Double> list = stockService.predictValueByStockANN(stock, dayToPredict);
