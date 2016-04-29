@@ -20,4 +20,22 @@ public interface StockService {
 	
 	//predict 
 	public double predictValueByHStockBayesian(String stock);
+	
+	//predict 
+	public int predictValueByStockKDJ(String stock);
+	
+	//predict 
+	public int predictValueByHStockKDJ(String stock);
+	
+	//predict 
+	public int predictValueByStockMACD(String stock);
+	
+	//predict 
+	public int predictValueByHStockMACD(String stock);
+	
+	//predict 
+	public int predictValueByStockRSI(String stock);
+	
+	//predict 
+	public int predictValueByHStockRSI(String stock);
 }

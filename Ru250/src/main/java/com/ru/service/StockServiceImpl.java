@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ru.algorithm.KDJ;
 import com.ru.algorithm.LauncherANN;
 import com.ru.algorithm.LauncherBayesian;
+import com.ru.algorithm.MACD;
+import com.ru.algorithm.RSI;
 import com.ru.dao.PersonDAO;
 import com.ru.dao.StockDAO;
 import com.ru.entity.Stock;
@@ -64,6 +67,60 @@ public class StockServiceImpl implements StockService {
     	List<Double> list = stockDAO.getHStockValue(stock);
     	LauncherBayesian launcher = new LauncherBayesian();
     	double result = launcher.predict(list);
+		return result;
+	}
+
+	@Override
+	public int predictValueByStockKDJ(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getStockValue(stock);
+        KDJ kdj = new KDJ();
+        int result = kdj.strategy(list);
+		return result;
+	}
+
+	@Override
+	public int predictValueByHStockKDJ(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getHStockValue(stock);
+        KDJ kdj = new KDJ();
+        int result = kdj.strategy(list);
+		return result;
+	}
+
+	@Override
+	public int predictValueByStockMACD(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getStockValue(stock);
+    	MACD macd = new MACD();
+        int result = macd.strategy(list);
+		return result;
+	}
+
+	@Override
+	public int predictValueByHStockMACD(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getHStockValue(stock);
+    	MACD macd = new MACD();
+        int result = macd.strategy(list);
+		return result;
+	}
+
+	@Override
+	public int predictValueByStockRSI(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getStockValue(stock);
+    	RSI rsi = new RSI();
+        int result = rsi.strategy(list);
+		return result;
+	}
+
+	@Override
+	public int predictValueByHStockRSI(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getHStockValue(stock);
+    	RSI rsi = new RSI();
+        int result = rsi.strategy(list);
 		return result;
 	}
 }
