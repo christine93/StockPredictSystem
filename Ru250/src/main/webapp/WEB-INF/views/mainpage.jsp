@@ -233,6 +233,8 @@
 						<div>The highest stock price of <span id="stockName"></span> in the last ten days:<span id="highest"></span></div>
 						<div>Average stock price of <span id="stockName1"></span> in the latest one year:<span id="avg"></span></div>
 						<div>Lowest stock price for <span id="stockName2"></span> in the latest one year:<span id="lowest"></span></div>
+						
+						<div>predict value:</div>
 					</div>
 
 					<div id="main" class="page-content">
