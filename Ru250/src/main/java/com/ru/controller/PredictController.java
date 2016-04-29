@@ -1,5 +1,6 @@
 package com.ru.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,16 +29,26 @@ public class PredictController {
 	
 	@RequestMapping(value = "/predictAnn", method = RequestMethod.GET)
 	@ResponseBody
-    public List<Double> predictHStockANN(HttpServletRequest request) {
+    public String predictHStockANN(HttpServletRequest request) {
 		String name = request.getParameter("name");
 		List<Double> list = stockService.predictValueByHStockANN(name, 10);
-		System.out.print(list.get(0));
-        return list;
+		//System.out.print(list.get(0));
+//		List<String> retString = new ArrayList<String>();
+//        for(Double i : list)
+//        {
+//        	retString.add(String.format("%.2f", i));
+//        }
+        String result = "";
+        for (int a = 0;a<list.size();a++){
+        	result = result+"["+String.format("%.2f", list.get(a))+"],";
+        }
+        result = "["+result.substring(0,result.length()-1)+"]";
+        return result;
     }
 	
 	@RequestMapping(value = "/avgAnn", method = RequestMethod.GET)
 	@ResponseBody
-    public double avgANN(HttpServletRequest request) {
+    public int avgANN(HttpServletRequest request) {
 		String name = request.getParameter("name");
 		double sum = 0;
 		List<Double> list = stockService.predictValueByHStockANN(name, 10);
@@ -45,7 +56,16 @@ public class PredictController {
 		for (int i= 0;i<list.size();i++){
 			sum = sum+list.get(i);
 		}
-        return sum/(list.size());
+		double avg = sum/(list.size());
+		double first = list.get(0);
+		if (avg > first){
+			return 1;
+		}else if(avg <first){
+			return -1;
+		}else{
+			return 0;
+		}
+         
     }
 	
 //	@RequestMapping(value = "/2", method = RequestMethod.POST)

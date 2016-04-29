@@ -276,7 +276,7 @@
 											<br>
 											RSI:<div id="rsi"></div>
 											<br>
-											Average Prediction:<div id="ann"></div>
+											Average Prediction:<div id="avgAnn"></div>
 										</h2>
 										</div>
 									</div>						
@@ -334,10 +334,10 @@
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		
-		<script src="highchart.js"></script>
-		
-        <script src="highstock.js"></script>
-		<script src="exporting.js"></script>
+<!-- 		<script src="https://code.highcharts.com/highcharts.js"></script>
+ -->
+		<script src="https://code.highcharts.com/stock/highstock.js"></script>
+		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 		
@@ -488,7 +488,7 @@
 				    dataType:"json",
 				    contentType:'application/json;charset=UTF-8',
 				    success : function(data) {
-				        if(data == 1){
+				        if(data == -1){
 				    		document.getElementById("kdj").innerHTML = sell;
 				    	}else if(data == 0){
 				    		document.getElementById("kdj").innerHTML = hold;
@@ -506,7 +506,7 @@
 				    dataType:"json",
 				    contentType:'application/json;charset=UTF-8',
 				    success : function(data) {
-				        if(data == 1){
+				        if(data == -1){
 				    		document.getElementById("macd").innerHTML = sell;
 				    	}else if(data == 0){
 				    		document.getElementById("macd").innerHTML = hold;
@@ -524,12 +524,30 @@
 				    dataType:"json",
 				    contentType:'application/json;charset=UTF-8',
 				    success : function(data) {
-				        if(data == 1){
+				        if(data == -1){
 				    		document.getElementById("rsi").innerHTML = sell;
 				    	}else if(data == 0){
 				    		document.getElementById("rsi").innerHTML = hold;
 				    	}else{
 				    		document.getElementById("rsi").innerHTML = buy;
+				    	} 
+				       }
+				    
+				   }); 
+				 
+				 var url9 = "http://localhost:8080/Ru250/avgAnn?name="+name;
+				 $.ajax({
+					type : "GET", 
+					url:url9,
+				    dataType:"json",
+				    contentType:'application/json;charset=UTF-8',
+				    success : function(data) {
+				        if(data == -1){
+				    		document.getElementById("avgAnn").innerHTML = sell;
+				    	}else if(data == 0){
+				    		document.getElementById("avgAnn").innerHTML = hold;
+				    	}else{
+				    		document.getElementById("avgAnn").innerHTML = buy;
 				    	} 
 				       }
 				    
