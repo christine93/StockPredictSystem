@@ -49,7 +49,7 @@ public class YahooController extends HttpServlet {
 	public void init() throws ServletException {
 		System.out.println("Start loading data from Yahoo...");
 		Timer timer = new Timer();
-		//thread starts 1 second after the server, and run every 60 seconds
+		//thread starts 1 second after the controller revoked, and run every 60 seconds
 		timer.schedule(new DataLoader(), 1000, 60000);
 	}
 }

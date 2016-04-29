@@ -14,4 +14,6 @@ public interface StockDAO {
 	public boolean checkExs(Stock stock);
 
 	public List<Double> getStockValue(String stockName);
+
+	public List<Double> getHStockValue(String stockName);
 }

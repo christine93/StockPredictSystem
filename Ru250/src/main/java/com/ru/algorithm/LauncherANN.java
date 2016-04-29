@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by GA on 4/10/16.
  */
-public class Launcher
+public class LauncherANN
 {
     public List<Double> launch(List<Double> inputFile, int dayToPredict)
     {

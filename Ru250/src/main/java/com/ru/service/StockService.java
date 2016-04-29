@@ -10,5 +10,14 @@ public interface StockService {
 //    public List<Stock> listStock();
 	
 	//predict 
-	public List<Double> predictValueByStock(String stock, int dayToPredict);
+	public List<Double> predictValueByStockANN(String stock, int dayToPredict);
+	
+	//predict 
+	public List<Double> predictValueByHStockANN(String stock, int dayToPredict);
+	
+	//predict 
+	public double predictValueByStockBayesian(String stock);
+	
+	//predict 
+	public double predictValueByHStockBayesian(String stock);
 }
