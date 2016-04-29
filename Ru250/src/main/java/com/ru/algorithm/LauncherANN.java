@@ -74,7 +74,7 @@ public class LauncherANN
         {
             double result = bp.test(test_input).get(0);
             ret.add(result * (max - min) + min);
-            System.out.println(result * (max - min) + min);
+//            System.out.println(result * (max - min) + min);
 
 
             for(int j = 1; j <= test_input.length - 1; j++)
@@ -83,7 +83,7 @@ public class LauncherANN
             }
             test_input[test_input.length-1] = result;
         }
-        System.out.println("Running time: " + (endTime - startTime) + " (ms)");
+//        System.out.println("Running time: " + (endTime - startTime) + " (ms)");
         return ret;
     }
 

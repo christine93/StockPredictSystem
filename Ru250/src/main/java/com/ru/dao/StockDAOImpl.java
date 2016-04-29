@@ -112,7 +112,7 @@ public class StockDAOImpl implements StockDAO{
 //	    String selectQ ="select * from stock where stock = '"+ stock.getStock()+ "' and date = '"+ stock.getDate()+ "' and time = '"+stock.getTime()+ "'";
 	    String date = new java.text.SimpleDateFormat("yy-MM-dd").format(new java.util.Date(Long.parseLong(stock.getDate()+"")*1000)); 
 	    String selectQ ="select * from stock where stock = '"+ stock.getStock()+ "' and DATE_FORMAT(FROM_UNIXTIME(date),'%y-%m-%d') = '"+ date+ "' and time = '"+stock.getTime()+ "'";
-	    System.out.println(selectQ);
+//	    System.out.println(selectQ);
 	    try {
 	    	stmt = conn.createStatement();
 	    	rs = stmt.executeQuery(selectQ);

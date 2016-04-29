@@ -90,7 +90,7 @@ public class SVM {
 //		{
 //			testLabels[i] = testLabel.get(i);
 //		}
-		System.out.println();
+//		System.out.println();
 		//predict the labels of test data set 
 		double err = 0.0;
 		double predictValue = 0.0;

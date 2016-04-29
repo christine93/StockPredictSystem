@@ -171,7 +171,7 @@ public class BackPropagation{
             k++;
             calculateOverallError();
             OverallError = OverallError/NumberOfSamples;
-            System.out.println("Iteration# = " + k + " Error = " + OverallError);
+//            System.out.println("Iteration# = " + k + " Error = " + OverallError);
         }while (((OverallError) > MinimumError) && (k <  MaxNumberOfEpochs));
     }
 
