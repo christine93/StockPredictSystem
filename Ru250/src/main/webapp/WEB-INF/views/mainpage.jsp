@@ -251,7 +251,7 @@
 
 							<div class="tab-content">
 								<div id="home4" class="tab-pane in active">
-									Prediction:
+									Prediction:<span id="prediction1"></span>
 								</div>
 
 								<div id="profile4" class="tab-pane">
@@ -341,7 +341,7 @@
 		
 		$(function () {	
 			//var urll = "http://localhost:8080/Ru250/lowerthanGOOG";
-			alert("1");
+			//alert("1");
 			$.ajax({
 				type : "GET", 
 				url:"http://localhost:8080/Ru250/lowerthanGOOG",
@@ -427,6 +427,44 @@
 			        }
 			    
 			   });
+			
+			var url4 = "http://localhost:8080/Ru250/predictBayesian?name="+name;
+			$.ajax({
+				type : "GET", 
+				url:url4,
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	alert(data);
+			    	$( "#prediction1" ).text( data );
+			        }
+			    
+			   });
+			
+			var url5 = "http://localhost:8080/Ru250/predictAnn?name="+name;
+			 $.getJSON(url5, 				function (data) {
+			    	
+				    // Create the chart
+				    $('#containerA').highcharts('StockChart', {
+
+
+				        rangeSelector : {
+				            selected : 1
+				        },
+
+				        title : {
+				            text : ' Stock Price'
+				        },
+
+				        series : [{
+				            name : 'APPLE',
+				            data : data,
+				            tooltip: {
+				                valueDecimals: 2
+				            }
+				        }]
+				    });
+				});
 	}
 		
 /*		function del(n){
@@ -461,14 +499,14 @@
 				el.parent().addClass("active");		
 		} */
 		
-		jQuery(function($) {
+jQuery(function($) {
 			$("#home").on('click',function(){
 
 						location.reload();
 				
 			});
 
-		});
+});
 		
 		
 
@@ -527,7 +565,7 @@ $(function () {
 
 
 
-$(function () {
+/* $(function () {
 	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
     // Create the chart
     $('#containerA').highcharts('StockChart', {
@@ -554,6 +592,6 @@ $(function () {
 });
 
 
-        </script>
+ */        </script>
 </body>
 </html>
