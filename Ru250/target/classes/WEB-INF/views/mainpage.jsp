@@ -334,6 +334,8 @@
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		
+		<script src="highchart.js"></script>
+		
         <script src="highstock.js"></script>
 		<script src="exporting.js"></script>
 		<!-- inline scripts related to this page -->
@@ -348,7 +350,7 @@
 			    dataType:"json",
 			    contentType:'application/json;charset=UTF-8',
 			    success : function(data) {
-			    	alert(data);
+			    	//alert(data);
 			    	$( "#lower" ).text( data );
 			        }
 			    
@@ -445,23 +447,33 @@
 			 $.getJSON(url5, 				function (data) {
 			    	
 				    // Create the chart
-				    $('#containerA').highcharts('StockChart', {
-
-
-				        rangeSelector : {
-				            selected : 1
+				 $('#containerA').highcharts({
+				        chart: {
+				            type: 'line'
 				        },
-
-				        title : {
-				            text : ' Stock Price'
+				        title: {
+				            text: 'Predict Price in future ten days'
 				        },
-
-				        series : [{
-				            name : 'APPLE',
-				            data : data,
-				            tooltip: {
-				                valueDecimals: 2
+				     
+				        xAxis: {
+				            categories: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7', 'Day8', 'Day9', 'Day10']
+				        },
+				        yAxis: {
+				            title: {
+				                text: 'price'
 				            }
+				        },
+				        plotOptions: {
+				            line: {
+				                dataLabels: {
+				                    enabled: true
+				                },
+				                enableMouseTracking: false
+				            }
+				        },
+				        series: [{
+				            name: name,
+				            data: data
 				        }]
 				    });
 				});

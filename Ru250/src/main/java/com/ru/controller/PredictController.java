@@ -26,6 +26,7 @@ public class PredictController {
     public List<Double> predictHStockANN(HttpServletRequest request) {
 		String name = request.getParameter("name");
 		List<Double> list = stockService.predictValueByHStockANN(name, 10);
+		System.out.print(list.get(0));
         return list;
     }
 	
