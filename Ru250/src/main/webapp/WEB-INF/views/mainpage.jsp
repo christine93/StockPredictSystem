@@ -270,11 +270,14 @@
 										</h1>
 										<h2>
 										
-											KDJ:<button class="btn btn-xs btn-danger">sell out</button>
+											KDJ:<div id="kdj"></div>
+											<button class="btn btn-xs btn-danger">sell out</button>
 											<br>
-											MACD:<button class="btn btn-xs btn-yellow">hold and see</button>
+											MACD:<div id="macd"></div>
+											<button class="btn btn-xs btn-yellow">hold and see</button>
 											<br>
-											RSI:<button class="btn btn-xs btn-green">buy in</button>
+											RSI:<div id="rsi"></div>
+											<button class="btn btn-xs btn-green">buy in</button>
 											<br>
 											Average Prediction:<button class="btn btn-xs btn-green">buy in</button>
 										</h2>
@@ -477,6 +480,28 @@
 				        }]
 				    });
 				});
+			 
+			 var url6 = "http://localhost:8080/Ru250/XXXX?name="+name;
+			 	var sell = "<button class='btn btn-xs btn-danger'>sell out</button>";
+			 	var hold = "<button class='btn btn-xs btn-yellow'>hold and see</button>";
+			 	var buy = "<button class='btn btn-xs btn-green'>buy in</button>";
+
+				/* $.ajax({
+					type : "GET", 
+					url:url6,
+				    dataType:"json",
+				    contentType:'application/json;charset=UTF-8',
+				    success : function(data) {
+				    	if(data = 1){
+				    		$("#kdj").append(sell);
+				    	}else if(data = -1){
+				    		$("#kdj").append(hold);
+				    	}else{
+				    		$("#kdj").append(buy);
+				    	}
+				       }
+				    
+				   }); */
 	}
 		
 /*		function del(n){
