@@ -72,6 +72,14 @@ private HstockService hstockService;
     	String lowest = hstockService.getLowest(name);
         return lowest;
     }
+
+	@RequestMapping(value = "/highest", method = RequestMethod.GET)
+    @ResponseBody
+    public String high(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	String highest = hstockService.getHighest(name);
+        return highest;
+    }
 	
 	@RequestMapping(value = "/lowerthanGOOG", method = RequestMethod.GET)
     @ResponseBody

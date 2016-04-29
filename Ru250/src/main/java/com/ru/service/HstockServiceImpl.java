@@ -44,4 +44,13 @@ private HstockDAO hstockDAO;
 		double lowest = list.get(0).getClose();
 		return String.format("%.2f", lowest);
 	}
+	
+	@Override
+	@Transactional
+	public String getHighest(String stock){
+		
+		//List<Hstock> list = hstockDAO.getLowest(stock);
+		double lowest =  hstockDAO.getHighestTen(stock);
+		return String.format("%.2f", lowest);
+	}
 }

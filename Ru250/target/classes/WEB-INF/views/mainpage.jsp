@@ -188,7 +188,7 @@
 								<span class="menu-text"> Intel </span>
 							</a>
 						</li>
-						<li id="cisco" onclick="hideContent('CICO')">
+						<li id="cisco" onclick="hideContent('CSCO')">
 							<a href="#">
 								<i class="icon-dashboard"></i>
 								<span class="menu-text"> Cisco </span>
@@ -335,6 +335,17 @@
 			stock.style.display='block';
 			
 			/*Highest value*/
+			var url1 = "http://localhost:8080/Ru250/highest?name="+name;
+			$.ajax({
+				type : "GET", 
+				url:url1,
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	$( "#highest" ).text( data );
+			        }
+			    
+			   });
 			/*Average stock price in the latest one year*/
 			var url2 = "http://localhost:8080/Ru250/avgstock?name="+name;
 			$.ajax({

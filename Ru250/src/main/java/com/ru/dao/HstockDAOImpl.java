@@ -3,6 +3,7 @@ package com.ru.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -36,13 +37,16 @@ public class HstockDAOImpl implements HstockDAO{
 	}
 	
 	@Override
-	public List<Hstock> getHighestTen(String stock){
+	public double getHighestTen(String stock){
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		Query q = session.createQuery("");
+		
+		String sql        = "SELECT `close` FROM hstock WHERE DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 10 DAY) AND stock = ? ORDER BY CLOSE DESC;";
+		SQLQuery q = session.createSQLQuery(sql);
 		q.setParameter(0, stock);
-		List<Hstock> list = q.list();
-		return list;
+		List<Double> list = q.list() ;
+		double result = list.get(0);
+		return result;
 	}
 	
 	@Override

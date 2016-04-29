@@ -8,7 +8,7 @@ public interface HstockDAO {
 
 	public List<Hstock> searchStockByName(String stock);
 
-	public List<Hstock> getHighestTen(String stock);
+	public double getHighestTen(String stock);
 
 	public List<Hstock> getByStock(String stock);
 
