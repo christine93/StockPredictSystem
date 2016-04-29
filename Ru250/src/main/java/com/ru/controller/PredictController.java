@@ -44,4 +44,40 @@ public class PredictController {
 		double result = stockService.predictValueByHStockBayesian(stock);
         return result;
     }
+	
+	@RequestMapping(value = "/5", method = RequestMethod.POST)
+    public int predictValueByStockKDJ(@PathVariable("stock") String stock) {
+		int result = stockService.predictValueByStockKDJ(stock);
+        return result;
+    }
+	
+	@RequestMapping(value = "/6", method = RequestMethod.POST)
+    public int predictValueByHStockKDJ(@PathVariable("stock") String stock) {
+		int result = stockService.predictValueByHStockKDJ(stock);
+        return result;
+    }
+	
+	@RequestMapping(value = "/7", method = RequestMethod.POST)
+    public int predictValueByStockMACD(@PathVariable("stock") String stock) {
+		int result = stockService.predictValueByStockMACD(stock);
+        return result;
+    }
+	
+	@RequestMapping(value = "/8", method = RequestMethod.POST)
+    public int predictValueByHStockMACD(@PathVariable("stock") String stock) {
+		int result = stockService.predictValueByHStockMACD(stock);
+        return result;
+    }
+	
+	@RequestMapping(value = "/9", method = RequestMethod.POST)
+    public int predictValueByStockRSI(@PathVariable("stock") String stock) {
+		int result = stockService.predictValueByStockRSI(stock);
+        return result;
+    }
+	
+	@RequestMapping(value = "/10", method = RequestMethod.POST)
+    public int predictValueByHStockRSI(@PathVariable("stock") String stock) {
+		int result = stockService.predictValueByHStockRSI(stock);
+        return result;
+    }
 }
