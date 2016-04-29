@@ -1,5 +1,6 @@
 package com.ru.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,26 @@ private HstockService hstockService;
 		this.hstockService = hstockService;
 	}
 
+	@RequestMapping(value = "/searchhstock", method = RequestMethod.GET)
+    @ResponseBody
+    public String searchHstockByName(HttpServletRequest request) throws ParseException{
+    	String name = request.getParameter("name");
+    	List<Hstock> hstock = hstockService.searchStockByName(name);
+    	String result = "";
+//    	for(Hstock s : hstock){
+//    		s.setDate(s.getDate().);
+//			System.out.print(s.getDate());
+//    		
+//			
+//		}
+    	for(int i=0;i<hstock.size();i++){
+    		result=result+"["+new java.text.SimpleDateFormat("yyyy-MM-dd").parse(hstock.get(i).getDate()).getTime()+","+hstock.get(i).getClose()+"],";
+    	}
+    	result = "["+result.substring(0, result.length()-1)+"]";
+    	System.out.println(result);
+        return result;
+    }
+	
 	@RequestMapping(value = "/historystock", method = RequestMethod.GET)
     @ResponseBody
     public List<Hstock> searchStockByName(HttpServletRequest request){
@@ -47,6 +68,14 @@ private HstockService hstockService;
 	@RequestMapping(value = "/lowest", method = RequestMethod.GET)
     @ResponseBody
     public String low(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	String lowest = hstockService.getLowest(name);
+        return lowest;
+    }
+	
+	@RequestMapping(value = "/lowerthanGOOG", method = RequestMethod.GET)
+    @ResponseBody
+    public String lower(HttpServletRequest request){
     	String name = request.getParameter("name");
     	String lowest = hstockService.getLowest(name);
         return lowest;

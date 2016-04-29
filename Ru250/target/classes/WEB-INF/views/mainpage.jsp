@@ -170,42 +170,37 @@
 								<span class="menu-text"> Yahoo </span>
 							</a>
 						</li>
-						<li>
+						<li id="linkedin" onclick="hideContent('LNKD')">
 							<a href="#">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> About Us </span>
+								<span class="menu-text"> LinkedIn </span>
 							</a>
 						</li>
-						<li>
+						<li id="fb" onclick="hideContent('FB')">
 							<a href="#">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> About Us </span>
+								<span class="menu-text"> Facebook </span>
 							</a>
 						</li>
-						<li>
+						<li id="intel" onclick="hideContent('INTC')">
 							<a href="#">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> About Us </span>
+								<span class="menu-text"> Intel </span>
 							</a>
 						</li>
-						<li>
+						<li id="cisco" onclick="hideContent('CICO')">
 							<a href="#">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> About Us </span>
+								<span class="menu-text"> Cisco </span>
 							</a>
 						</li>
-						<li>
+						<li id="apple" onclick="hideContent('AAPL')">
 							<a href="#">
 								<i class="icon-dashboard"></i>
-								<span class="menu-text"> About Us </span>
+								<span class="menu-text"> Apple </span>
 							</a>
 						</li>
-						<li>
-							<a href="#">
-								<i class="icon-dashboard"></i>
-								<span class="menu-text"> About Us </span>
-							</a>
-						</li>
+					
 
 					</ul><!-- /.nav-list -->
 
@@ -241,11 +236,11 @@
 					</div>
 
 					<div id="main" class="page-content">
-						<div class="search"  style="margin-left:380px;">
+						<!-- <div class="search"  style="margin-left:380px;">
                             <span class="s_con"><input id="stockname" type="text" class="content" placeholder="Search"><i class="clear"></i>
                             </span>
                             <span class="s_btn" id="search_button" onclick='hideContent()'>Search</span> 
-                       	</div>
+                       	</div> -->
 
                         <div class="row" style="margin-top:110px"> 
                         <div class="col-xs-6">
@@ -309,7 +304,7 @@
 			$( "#stockName" ).text( name );
 			$( "#stockName1" ).text( name );
 			$( "#stockName2" ).text( name );
-		    var url = "http://localhost:8080/Ru250/searchstock?name="+name;
+		    var url = "http://localhost:8080/Ru250/searchhstock?name="+name;
 			
 		    $.getJSON(url, 				function (data) {
 		    	
@@ -365,7 +360,7 @@
 			        }
 			    
 			   });
-			}
+		}
 		
 		function del(n){
 				var s=document.getElementById('process');
@@ -399,10 +394,6 @@
 				el.parent().addClass("active");		
 		}
 		
-
-		function hidecontent(){
-			
-		}
 		jQuery(function($) {
 			$("#home").on('click',function(){
 						

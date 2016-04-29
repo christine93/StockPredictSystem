@@ -17,7 +17,7 @@ public class Hstock {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String stock;
-	private Date date;
+	private String date;
 	private double open;
 	private double high;
 	private double low;
@@ -36,10 +36,10 @@ public class Hstock {
 	public void setStock(String stock) {
 		this.stock = stock;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public double getOpen() {

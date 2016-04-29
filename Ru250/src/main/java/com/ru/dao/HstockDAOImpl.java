@@ -24,7 +24,7 @@ public class HstockDAOImpl implements HstockDAO{
 	public List<Hstock> searchStockByName(String stock) {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		Query q = session.createQuery("from Hstock where stock like ?");
+		Query q = session.createQuery("from Hstock where stock like ? order by date");
 		q.setParameter(0, stock);
 		List<Hstock> list = q.list();
 		
@@ -63,5 +63,6 @@ public class HstockDAOImpl implements HstockDAO{
 		List<Hstock> list = q.list();
 		return list;
 	}
+	
 	
 }
