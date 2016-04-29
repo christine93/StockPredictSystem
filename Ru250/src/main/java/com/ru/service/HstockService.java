@@ -8,8 +8,13 @@ public interface HstockService {
 
 	public List<Hstock> searchStockByName(String stock);
 
-	public String getAverage(String stock);
+	public double getAverage(String stock);
 
 	public String getLowest(String stock);
+
+	public String getHighest(String stock);
+
+	public List<String> getLower();
+
 
 }

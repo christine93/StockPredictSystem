@@ -1,5 +1,6 @@
 package com.ru.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,26 @@ private HstockService hstockService;
 		this.hstockService = hstockService;
 	}
 
+	@RequestMapping(value = "/searchhstock", method = RequestMethod.GET)
+    @ResponseBody
+    public String searchHstockByName(HttpServletRequest request) throws ParseException{
+    	String name = request.getParameter("name");
+    	List<Hstock> hstock = hstockService.searchStockByName(name);
+    	String result = "";
+//    	for(Hstock s : hstock){
+//    		s.setDate(s.getDate().);
+//			System.out.print(s.getDate());
+//    		
+//			
+//		}
+    	for(int i=0;i<hstock.size();i++){
+    		result=result+"["+new java.text.SimpleDateFormat("yyyy-MM-dd").parse(hstock.get(i).getDate()).getTime()+","+hstock.get(i).getClose()+"],";
+    	}
+    	result = "["+result.substring(0, result.length()-1)+"]";
+    	System.out.println(result);
+        return result;
+    }
+	
 	@RequestMapping(value = "/historystock", method = RequestMethod.GET)
     @ResponseBody
     public List<Hstock> searchStockByName(HttpServletRequest request){
@@ -40,8 +61,8 @@ private HstockService hstockService;
     @ResponseBody
     public String avg(HttpServletRequest request){
     	String name = request.getParameter("name");
-    	String avg = hstockService.getAverage(name);
-        return avg;
+    	double avg = hstockService.getAverage(name);
+        return String.format("%.2f", avg);
     }
 	
 	@RequestMapping(value = "/lowest", method = RequestMethod.GET)
@@ -50,5 +71,24 @@ private HstockService hstockService;
     	String name = request.getParameter("name");
     	String lowest = hstockService.getLowest(name);
         return lowest;
+    }
+
+	@RequestMapping(value = "/highest", method = RequestMethod.GET)
+    @ResponseBody
+    public String high(HttpServletRequest request){
+    	String name = request.getParameter("name");
+    	String highest = hstockService.getHighest(name);
+        return highest;
+    }
+	
+	@RequestMapping(value = "/lowerthanGOOG", method = RequestMethod.GET)
+    @ResponseBody
+    public String lower(HttpServletRequest request){
+		String lower ="";
+		List<String> list = hstockService.getLower();
+		for (int i = 0;i<list.size();i++){
+			lower = lower+","+list.get(i);
+		}
+        return lower.substring(1);
     }
 }

@@ -25,7 +25,7 @@ private HstockDAO hstockDAO;
 	
 	@Override
 	@Transactional
-	public String getAverage(String stock){
+	public double getAverage(String stock){
 		
 		List<Hstock> list = hstockDAO.searchStockByName(stock);
 		double sum = 0;
@@ -33,7 +33,7 @@ private HstockDAO hstockDAO;
 			sum = sum + list.get(i).getClose();
 		}
 		double avg = (sum)/list.size();
-		return String.format("%.2f", avg);
+		return avg;
 	}
 	
 	@Override
@@ -44,4 +44,24 @@ private HstockDAO hstockDAO;
 		double lowest = list.get(0).getClose();
 		return String.format("%.2f", lowest);
 	}
+	
+	@Override
+	@Transactional
+	public String getHighest(String stock){
+		
+		//List<Hstock> list = hstockDAO.getLowest(stock);
+		double lowest =  hstockDAO.getHighestTen(stock);
+		return String.format("%.2f", lowest);
+	}
+	
+	@Override
+	@Transactional
+	public List<String> getLower(){
+		
+		List<String> list = hstockDAO.getLowerThanGoog();
+
+		return list;
+	}
+
+	
 }
