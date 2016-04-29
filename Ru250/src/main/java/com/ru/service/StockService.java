@@ -38,4 +38,10 @@ public interface StockService {
 	
 	//predict 
 	public int predictValueByHStockRSI(String stock);
+	
+	//predict 
+	public double predictValueByStockSVM(String stock);
+	
+	//predict 
+	public double predictValueByHStockSVM(String stock);
 }

@@ -9,6 +9,7 @@ import com.ru.algorithm.LauncherANN;
 import com.ru.algorithm.LauncherBayesian;
 import com.ru.algorithm.MACD;
 import com.ru.algorithm.RSI;
+import com.ru.algorithm.SVM;
 import com.ru.dao.PersonDAO;
 import com.ru.dao.StockDAO;
 import com.ru.entity.Stock;
@@ -121,6 +122,24 @@ public class StockServiceImpl implements StockService {
     	List<Double> list = stockDAO.getHStockValue(stock);
     	RSI rsi = new RSI();
         int result = rsi.strategy(list);
+		return result;
+	}
+
+	@Override
+	public double predictValueByStockSVM(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getStockValue(stock);
+    	SVM rsi = new SVM();
+        double result = rsi.run(list);
+		return result;
+	}
+
+	@Override
+	public double predictValueByHStockSVM(String stock) {
+		// TODO Auto-generated method stub
+    	List<Double> list = stockDAO.getHStockValue(stock);
+    	SVM rsi = new SVM();
+        double result = rsi.run(list);
 		return result;
 	}
 }

@@ -130,4 +130,16 @@ public class PredictController {
 		int result = stockService.predictValueByHStockRSI(name);
         return result;
     }
+
+	@RequestMapping(value = "/10", method = RequestMethod.POST)
+    public double predictValueByStockSVM(@PathVariable("stock") String stock) {
+		double result = stockService.predictValueByStockSVM(stock);
+        return result;
+    }
+	
+	@RequestMapping(value = "/11", method = RequestMethod.POST)
+    public double predictValueByHStockSVM(@PathVariable("stock") String stock) {
+		double result = stockService.predictValueByHStockSVM(stock);
+        return result;
+    }
 }
