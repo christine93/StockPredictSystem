@@ -67,7 +67,8 @@ public class HstockDAOImpl implements HstockDAO{
 		List<Hstock> list = q.list();
 		return list;
 	}
-	
+	/*SELECT A.stock FROM (SELECT stock, AVG(CLOSE) price FROM hstock WHERE DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 1 YEAR) GROUP BY stock) A
+WHERE A.price < (SELECT MIN(CLOSE) FROM hstock WHERE stock = 'GOOG' AND DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 1 YEAR));*/
 	@Override
 	public List<Hstock> getAvg(String stock){
 		// TODO Auto-generated method stub
@@ -79,5 +80,16 @@ public class HstockDAOImpl implements HstockDAO{
 		return list;
 	}
 	
+	@Override
+	public List<String> getLowerThanGoog(){
+		Session session = this.sessionFactory.getCurrentSession();
+		
+		String sql        = "SELECT A.stock FROM (SELECT stock, AVG(CLOSE) price FROM hstock WHERE DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 1 YEAR) GROUP BY stock)A"+
+							" WHERE A.price < (SELECT MIN(CLOSE) FROM hstock WHERE stock = 'GOOG' AND DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 1 YEAR))";
+		SQLQuery q = session.createSQLQuery(sql);
+		//q.setParameter(0, stock);
+		List<String> list = q.list() ;
+		return list;
+	}
 	
 }

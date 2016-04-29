@@ -54,14 +54,14 @@ private HstockDAO hstockDAO;
 		return String.format("%.2f", lowest);
 	}
 	
-//	@Override
-//	@Transactional
-//	public String getLower(String stock){
-//		
-//		List<Hstock> list = hstockDAO.getAvg(stock);
-//
-//		return String.format("%.2f", lowest);
-//	}
+	@Override
+	@Transactional
+	public List<String> getLower(){
+		
+		List<String> list = hstockDAO.getLowerThanGoog();
+
+		return list;
+	}
 
 	
 }

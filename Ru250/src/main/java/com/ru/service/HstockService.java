@@ -14,5 +14,7 @@ public interface HstockService {
 
 	public String getHighest(String stock);
 
+	public List<String> getLower();
+
 
 }

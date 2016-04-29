@@ -135,7 +135,7 @@
 					<ul class="nav nav-list">
 						<li id="mainpage" class="active">
 							<a id="home" href="#">
-								<i class="icon-dashboard"></i>
+								<i class="icon-home"></i>
 								<span class="menu-text"> Home </span>
 							</a>
 						</li>
@@ -230,11 +230,59 @@
 					</div>
 					<div id="stock" style="display:none;">
 						<div id="container4" style="height: 100%; width: 100%"></div>
+						<h4>
 						<div>The highest stock price of <span id="stockName"></span> in the last ten days:<span id="highest"></span></div>
 						<div>Average stock price of <span id="stockName1"></span> in the latest one year:<span id="avg"></span></div>
 						<div>Lowest stock price for <span id="stockName2"></span> in the latest one year:<span id="lowest"></span></div>
-						
-						<div>predict value:</div>
+						</h4>
+						<div class="tabbable">
+							<ul class="nav nav-tabs padding-12 tab-color-blue background-blue" id="myTab4">
+								<li class="active">
+									<a data-toggle="tab" href="#home4">Bayesian Curve-fitting</a>
+								</li>
+ 								<li>
+									<a data-toggle="tab" href="#profile4">Support Vector Machine</a>
+								</li>
+
+								<li>
+									<a data-toggle="tab" href="#dropdown14">Artifical Neural Networks</a>
+								</li>
+							</ul>
+
+							<div class="tab-content">
+								<div id="home4" class="tab-pane in active">
+									Prediction:
+								</div>
+
+								<div id="profile4" class="tab-pane">
+									Prediction:							
+								</div>
+
+								<div id="dropdown14" class="tab-pane">
+									<div class="row">
+										<div class="col-xs-8">
+										<div id="containerA" style="height: 400px; min-width: 610px"></div>
+										</div>	
+										<div class="col-xs-4">	
+										<h1>
+											Suggestion:
+											<br>
+										</h1>
+										<h2>
+										
+											KDJ:<button class="btn btn-xs btn-danger">sell out</button>
+											<br>
+											MACD:<button class="btn btn-xs btn-yellow">hold and see</button>
+											<br>
+											RSI:<button class="btn btn-xs btn-green">buy in</button>
+											<br>
+											Average Prediction:<button class="btn btn-xs btn-green">buy in</button>
+										</h2>
+										</div>
+									</div>						
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<div id="main" class="page-content">
@@ -245,18 +293,18 @@
                        	</div> -->
 
                         <div class="row" style="margin-top:110px"> 
-                        <div class="col-xs-6">
-                        <div id="container" style="height: 400px; min-width: 310px">
-
-                        </div>
-                        </div>
-                        <div class="col-xs-6">
-                        <div id="container1" style="height: 400px; min-width: 310px"></div>
-                        </div>
+	                        <div class="col-xs-6">
+	                        <div id="container" style="height: 400px; min-width: 310px">
+	
+	                        </div>
+	                        </div>
+	                        <div class="col-xs-6">
+	                        <div id="container1" style="height: 400px; min-width: 310px"></div>
+	                        </div>
                         
                         </div>
-                        <div>The companies who have the average stock price lesser than the lowest of Google in the latest one year</div>          
-                            
+                        <div>The companies who have the average stock price lesser than the lowest of Google in the latest one year:<span id="lower"></span></div>         
+                        
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
 
@@ -286,22 +334,28 @@
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		
-        <script src="https://code.highcharts.com/stock/highstock.js"></script>
-		<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="highstock.js"></script>
+		<script src="exporting.js"></script>
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 		
-		function hideContent(){
-			var name = $("#stockname").val();
-
-			var content =document.getElementById("main");
-			content.style.display='none';
-			var stock =  document.getElementById("stock");
-			stock.style.display='block';
-			
-		}
+		$(function () {	
+			//var urll = "http://localhost:8080/Ru250/lowerthanGOOG";
+			alert("1");
+			$.ajax({
+				type : "GET", 
+				url:"http://localhost:8080/Ru250/lowerthanGOOG",
+			    dataType:"json",
+			    contentType:'application/json;charset=UTF-8',
+			    success : function(data) {
+			    	alert(data);
+			    	$( "#lower" ).text( data );
+			        }
+			    
+			   });
+		});
 		
-		function hideContent(name){
+	function hideContent(name){
 			//alert(name);
 			$( "#stockName" ).text( name );
 			$( "#stockName1" ).text( name );
@@ -373,9 +427,9 @@
 			        }
 			    
 			   });
-		}
+	}
 		
-		function del(n){
+/*		function del(n){
 				var s=document.getElementById('process');
 				var t=s.childNodes.length;
 				for (var i=0;i<t;i++){
@@ -385,7 +439,7 @@
 				}
 		}
 				
-		function clearAndSetBread(el){
+ 		function clearAndSetBread(el){
 		
 				// clear all breadcrumb first
 				del(3);
@@ -405,22 +459,19 @@
 				$('#mainpage').removeClass("active");				
 				// set active state
 				el.parent().addClass("active");		
-		}
+		} */
 		
 		jQuery(function($) {
 			$("#home").on('click',function(){
-						
-						/*breadcrumbs*/
-						//clearAndSetBread("Home");
-						/*active*/
-						clearAndSetActiveStates($(this));
+
 						location.reload();
-						
-						
+				
 			});
 
 		});
 		
+		
+
 $(function () {
 		$.getJSON('http://localhost:8080/Ru250/searchstock?name=GOOG', 				function (data) {
         // Create the chart
@@ -469,6 +520,36 @@ $(function () {
             }]
         });
     });
+
+});
+
+
+
+
+
+$(function () {
+	$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', 				function (data) {
+    // Create the chart
+    $('#containerA').highcharts('StockChart', {
+
+
+        rangeSelector : {
+            selected : 1
+        },
+
+        title : {
+            text : 'Microsoft Stock Price'
+        },
+
+        series : [{
+            name : 'MSFT',
+            data : data,
+            tooltip: {
+                valueDecimals: 2
+            }
+        }]
+    });
+});
 
 });
 

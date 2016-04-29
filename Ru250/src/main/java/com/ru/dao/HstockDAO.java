@@ -16,4 +16,8 @@ public interface HstockDAO {
 
 	public List<Hstock> getAvg(String stock);
 
+	//public List<String> getLowerThanGoog(String stock);
+
+	public List<String> getLowerThanGoog();
+
 }

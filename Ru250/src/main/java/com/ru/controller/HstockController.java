@@ -83,20 +83,12 @@ private HstockService hstockService;
 	
 	@RequestMapping(value = "/lowerthanGOOG", method = RequestMethod.GET)
     @ResponseBody
-    public String[] lower(HttpServletRequest request){
-		String[] a = null;
-		double[]b = null;
-    	//String name = request.getParameter("name");
-    	b[0] = hstockService.getAverage("GOOG");
-    	double linkedin = hstockService.getAverage("LNKD");
-    	double apple = hstockService.getAverage("AAPL");
-    	double cisco = hstockService.getAverage("CSCO");
-    	double amazon = hstockService.getAverage("AMZN");
-    	double yahoo = hstockService.getAverage("YHOO");
-    	double oracle = hstockService.getAverage("ORCL");
-    	double microsoft = hstockService.getAverage("MSFT");
-    	double facebook = hstockService.getAverage("FB");
-    	
-        return a;
+    public String lower(HttpServletRequest request){
+		String lower ="";
+		List<String> list = hstockService.getLower();
+		for (int i = 0;i<list.size();i++){
+			lower = lower+","+list.get(i);
+		}
+        return lower.substring(1);
     }
 }
