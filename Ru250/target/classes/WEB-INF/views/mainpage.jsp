@@ -271,15 +271,12 @@
 										<h2>
 										
 											KDJ:<div id="kdj"></div>
-											<button class="btn btn-xs btn-danger">sell out</button>
 											<br>
 											MACD:<div id="macd"></div>
-											<button class="btn btn-xs btn-yellow">hold and see</button>
 											<br>
 											RSI:<div id="rsi"></div>
-											<button class="btn btn-xs btn-green">buy in</button>
 											<br>
-											Average Prediction:<button class="btn btn-xs btn-green">buy in</button>
+											Average Prediction:<div id="ann"></div>
 										</h2>
 										</div>
 									</div>						
@@ -440,7 +437,6 @@
 			    dataType:"json",
 			    contentType:'application/json;charset=UTF-8',
 			    success : function(data) {
-			    	alert(data);
 			    	$( "#prediction1" ).text( data );
 			        }
 			    
@@ -481,27 +477,64 @@
 				    });
 				});
 			 
-			 var url6 = "http://localhost:8080/Ru250/XXXX?name="+name;
-			 	var sell = "<button class='btn btn-xs btn-danger'>sell out</button>";
+				var sell = "<button class='btn btn-xs btn-danger'>sell out</button>";
 			 	var hold = "<button class='btn btn-xs btn-yellow'>hold and see</button>";
 			 	var buy = "<button class='btn btn-xs btn-green'>buy in</button>";
-
-				/* $.ajax({
+			 	
+				 var url6 = "http://localhost:8080/Ru250/kdj?name="+name;
+				 $.ajax({
 					type : "GET", 
 					url:url6,
 				    dataType:"json",
 				    contentType:'application/json;charset=UTF-8',
 				    success : function(data) {
-				    	if(data = 1){
-				    		$("#kdj").append(sell);
-				    	}else if(data = -1){
-				    		$("#kdj").append(hold);
+				        if(data == 1){
+				    		document.getElementById("kdj").innerHTML = sell;
+				    	}else if(data == 0){
+				    		document.getElementById("kdj").innerHTML = hold;
 				    	}else{
-				    		$("#kdj").append(buy);
-				    	}
+				    		document.getElementById("kdj").innerHTML = buy;
+				    	} 
 				       }
 				    
-				   }); */
+				   }); 
+				 
+				 var url7 = "http://localhost:8080/Ru250/macd?name="+name;
+				 $.ajax({
+					type : "GET", 
+					url:url7,
+				    dataType:"json",
+				    contentType:'application/json;charset=UTF-8',
+				    success : function(data) {
+				        if(data == 1){
+				    		document.getElementById("macd").innerHTML = sell;
+				    	}else if(data == 0){
+				    		document.getElementById("macd").innerHTML = hold;
+				    	}else{
+				    		document.getElementById("macd").innerHTML = buy;
+				    	} 
+				       }
+				    
+				   }); 
+				 
+				 var url8 = "http://localhost:8080/Ru250/rsi?name="+name;
+				 $.ajax({
+					type : "GET", 
+					url:url8,
+				    dataType:"json",
+				    contentType:'application/json;charset=UTF-8',
+				    success : function(data) {
+				        if(data == 1){
+				    		document.getElementById("rsi").innerHTML = sell;
+				    	}else if(data == 0){
+				    		document.getElementById("rsi").innerHTML = hold;
+				    	}else{
+				    		document.getElementById("rsi").innerHTML = buy;
+				    	} 
+				       }
+				    
+				   }); 
+				 
 	}
 		
 /*		function del(n){

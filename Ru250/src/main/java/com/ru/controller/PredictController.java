@@ -17,9 +17,14 @@ import com.ru.service.StockService;
 
 @Controller
 public class PredictController {
+	private StockService stockService;
+
 	@Autowired(required=true)
 	@Qualifier(value="stockService")
-	private StockService stockService;
+	public void setStockService(StockService stockService) {
+		this.stockService =  stockService;
+	}
+
 	
 	@RequestMapping(value = "/predictAnn", method = RequestMethod.GET)
 	@ResponseBody
@@ -62,5 +67,47 @@ public class PredictController {
 		String name = request.getParameter("name");
 		double result = stockService.predictValueByHStockBayesian(name);
 		return String.format("%.2f", result);
+    }
+	
+//	@RequestMapping(value = "/5", method = RequestMethod.POST)
+//    public int predictValueByStockKDJ(@PathVariable("stock") String stock) {
+//		int result = stockService.predictValueByStockKDJ(stock);
+//        return result;
+//    }
+	
+	@RequestMapping(value = "/kdj", method = RequestMethod.GET)
+	@ResponseBody
+    public int predictValueByHStockKDJ(HttpServletRequest request) {
+		String name = request.getParameter("name");
+		int result = stockService.predictValueByHStockKDJ(name);
+        return result;
+    }
+	
+//	@RequestMapping(value = "/7", method = RequestMethod.POST)
+//    public int predictValueByStockMACD(@PathVariable("stock") String stock) {
+//		int result = stockService.predictValueByStockMACD(stock);
+//        return result;
+//    }
+	
+	@RequestMapping(value = "/macd", method = RequestMethod.GET)
+	@ResponseBody
+    public int predictValueByHStockMACD(HttpServletRequest request) {
+		String name = request.getParameter("name");
+		int result = stockService.predictValueByHStockMACD(name);
+        return result;
+    }
+	
+//	@RequestMapping(value = "/9", method = RequestMethod.POST)
+//    public int predictValueByStockRSI(@PathVariable("stock") String stock) {
+//		int result = stockService.predictValueByStockRSI(stock);
+//        return result;
+//    }
+	
+	@RequestMapping(value = "/rsi", method = RequestMethod.GET)
+	@ResponseBody
+    public int predictValueByHStockRSI(HttpServletRequest request) {
+		String name = request.getParameter("name");
+		int result = stockService.predictValueByHStockRSI(name);
+        return result;
     }
 }
