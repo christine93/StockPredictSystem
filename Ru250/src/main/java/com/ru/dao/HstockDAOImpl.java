@@ -68,5 +68,16 @@ public class HstockDAOImpl implements HstockDAO{
 		return list;
 	}
 	
+	@Override
+	public List<Hstock> getAvg(String stock){
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		String sql = "SELECT AVG(close),stock FROM hstock where stock=?";
+		SQLQuery q = session.createSQLQuery(sql);
+		q.setParameter(0, stock);
+		List<Hstock> list = q.list();
+		return list;
+	}
+	
 	
 }

@@ -80,7 +80,7 @@
 						</li>
                      -->
 					<li class="light-blue">
-                    <a href="login_admin">log in</a>
+                    <a href="aboutus">About Us</a>
                     </li>
 					</ul><!-- /.ace-nav -->
 				</div><!-- /.navbar-header -->

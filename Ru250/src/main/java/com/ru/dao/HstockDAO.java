@@ -14,4 +14,6 @@ public interface HstockDAO {
 
 	public List<Hstock> getLowest(String stock);
 
+	public List<Hstock> getAvg(String stock);
+
 }
