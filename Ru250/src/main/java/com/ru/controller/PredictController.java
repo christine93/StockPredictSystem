@@ -131,15 +131,18 @@ public class PredictController {
         return result;
     }
 
-	@RequestMapping(value = "/10", method = RequestMethod.POST)
-    public double predictValueByStockSVM(@PathVariable("stock") String stock) {
-		double result = stockService.predictValueByStockSVM(stock);
-        return result;
-    }
+//	@RequestMapping(value = "/10", method = RequestMethod.POST)
+//    public double predictValueByStockSVM(@PathVariable("stock") String stock) {
+//		double result = stockService.predictValueByStockSVM(stock);
+//        return result;
+//    }
 	
-	@RequestMapping(value = "/11", method = RequestMethod.POST)
-    public double predictValueByHStockSVM(@PathVariable("stock") String stock) {
-		double result = stockService.predictValueByHStockSVM(stock);
-        return result;
+	@RequestMapping(value = "/predictSvn", method = RequestMethod.GET)
+	@ResponseBody
+    public String predictValueByHStockSVM(HttpServletRequest request) {
+		String name = request.getParameter("name");
+		double result = stockService.predictValueByHStockSVM(name);
+        return String.format("%.2f", result);
+
     }
 }

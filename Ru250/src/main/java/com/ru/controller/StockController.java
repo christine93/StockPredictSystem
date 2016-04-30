@@ -1,5 +1,6 @@
 package com.ru.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,15 +38,20 @@ public class StockController {
 	
 	@RequestMapping(value = "/searchstock", method = RequestMethod.GET)
     @ResponseBody
-    public String searchStockByName(HttpServletRequest request){
+    public String searchStockByName(HttpServletRequest request) throws ParseException{
     	String name = request.getParameter("name");
     	List<Stock> stock = stockService.searchStockByName(name);
     	String result = "";
     	for(Stock s : stock){
 			long ldate = s.getDate();
-			ldate = ldate*1000;
-			String sdate = Long.toString(ldate);
-			s.setDate(sdate);
+			String sdate = new java.text.SimpleDateFormat("yyyy/MM/dd").format(new java.util.Date(ldate * 1000));
+			String tsdate = sdate+" "+s.getTime();
+			long epoch = new java.text.SimpleDateFormat("yyyy/MM/dd HH:mm").parse(tsdate).getTime();
+			//String sdate = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(s.getDate()+"").toString();
+			System.out.println(epoch);
+//			ldate = ldate*1000;
+//			String sdate = Long.toString(ldate);
+//			s.setDate(sdate);
 		}
     	for(int i=0;i<stock.size();i++){
     		result=result+"["+stock.get(i).getDate()+","+stock.get(i).getValue()+"],";

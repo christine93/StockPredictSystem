@@ -255,7 +255,7 @@
 								</div>
 
 								<div id="profile4" class="tab-pane">
-									Prediction:							
+									Prediction:	<span id="prediction2"></span>						
 								</div>
 
 								<div id="dropdown14" class="tab-pane">
@@ -379,7 +379,7 @@
 			        },
 
 			        series : [{
-			            name : 'APPLE',
+			            name : name,
 			            data : data,
 			            tooltip: {
 			                valueDecimals: 2
@@ -553,6 +553,18 @@
 				    
 				   }); 
 				 
+				 var url10 = "http://localhost:8080/Ru250/predictSvn?name="+name;
+				 $.ajax({
+					type : "GET", 
+					url:url10,
+				    dataType:"json",
+				    contentType:'application/json;charset=UTF-8',
+				    success : function(data) {
+				        $("#prediction2").text(data);
+				       }
+				    
+				   });
+				 
 	}
 		
 /*		function del(n){
@@ -599,7 +611,7 @@ jQuery(function($) {
 		
 
 $(function () {
-		$.getJSON('http://localhost:8080/Ru250/searchstock?name=GOOG', 				function (data) {
+		$.getJSON('http://localhost:8080/Ru250/searchhstock?name=GOOG', 				function (data) {
         // Create the chart
         $('#container').highcharts('StockChart', {
 
@@ -624,7 +636,7 @@ $(function () {
 
 });
 $(function () {
-		$.getJSON('http://localhost:8080/Ru250/searchstock?name=MSFT', 				function (data) {
+		$.getJSON('http://localhost:8080/Ru250/searchhstock?name=MSFT', 				function (data) {
         // Create the chart
         $('#container1').highcharts('StockChart', {
 
