@@ -245,7 +245,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 	}
 
 			if((a&&b)==1){
-				var url="http://localhost:8080/Ru250/login?userName="+name+"&pwd="+pwd;
+				var url="login?userName="+name+"&pwd="+pwd;
 				$.ajax({
 					type : "GET", 
 					url:url,
