@@ -346,7 +346,7 @@
 			//alert("1");
 			$.ajax({
 				type : "GET", 
-				url:"http://localhost:8080/Ru250/lowerthanGOOG",
+				url:"lowerthanGOOG",
 			    dataType:"json",
 			    contentType:'application/json;charset=UTF-8',
 			    success : function(data) {
@@ -362,7 +362,7 @@
 			$( "#stockName" ).text( name );
 			$( "#stockName1" ).text( name );
 			$( "#stockName2" ).text( name );
-		    var url = "http://localhost:8080/Ru250/searchhstock?name="+name;
+		    var url = "searchhstock?name="+name;
 			
 		    $.getJSON(url, 				function (data) {
 		    	
@@ -393,7 +393,7 @@
 			stock.style.display='block';
 			
 			/*Highest value*/
-			var url1 = "http://localhost:8080/Ru250/highest?name="+name;
+			var url1 = "highest?name="+name;
 			$.ajax({
 				type : "GET", 
 				url:url1,
@@ -405,7 +405,7 @@
 			    
 			   });
 			/*Average stock price in the latest one year*/
-			var url2 = "http://localhost:8080/Ru250/avgstock?name="+name;
+			var url2 = "avgstock?name="+name;
 			$.ajax({
 				type : "GET", 
 				url:url2,
@@ -418,7 +418,7 @@
 			   });
 			
 			/*Lowest stock price in the latest one year*/
-			var url3 = "http://localhost:8080/Ru250/lowest?name="+name;
+			var url3 = "lowest?name="+name;
 			$.ajax({
 				type : "GET", 
 				url:url3,
@@ -430,7 +430,7 @@
 			    
 			   });
 			
-			var url4 = "http://localhost:8080/Ru250/predictBayesian?name="+name;
+			var url4 = "predictBayesian?name="+name;
 			$.ajax({
 				type : "GET", 
 				url:url4,
@@ -442,7 +442,7 @@
 			    
 			   });
 			
-			var url5 = "http://localhost:8080/Ru250/predictAnn?name="+name;
+			var url5 = "predictAnn?name="+name;
 			 $.getJSON(url5, 				function (data) {
 			    	
 				    // Create the chart
@@ -481,7 +481,7 @@
 			 	var hold = "<button class='btn btn-xs btn-yellow'>hold and see</button>";
 			 	var buy = "<button class='btn btn-xs btn-green'>buy in</button>";
 			 	
-				 var url6 = "http://localhost:8080/Ru250/kdj?name="+name;
+				 var url6 = "kdj?name="+name;
 				 $.ajax({
 					type : "GET", 
 					url:url6,
@@ -499,7 +499,7 @@
 				    
 				   }); 
 				 
-				 var url7 = "http://localhost:8080/Ru250/macd?name="+name;
+				 var url7 = "macd?name="+name;
 				 $.ajax({
 					type : "GET", 
 					url:url7,
@@ -517,7 +517,7 @@
 				    
 				   }); 
 				 
-				 var url8 = "http://localhost:8080/Ru250/rsi?name="+name;
+				 var url8 = "rsi?name="+name;
 				 $.ajax({
 					type : "GET", 
 					url:url8,
@@ -535,7 +535,7 @@
 				    
 				   }); 
 				 
-				 var url9 = "http://localhost:8080/Ru250/avgAnn?name="+name;
+				 var url9 = "avgAnn?name="+name;
 				 $.ajax({
 					type : "GET", 
 					url:url9,
@@ -553,7 +553,7 @@
 				    
 				   }); 
 				 
-				 var url10 = "http://localhost:8080/Ru250/predictSvn?name="+name;
+				 var url10 = "predictSvn?name="+name;
 				 $.ajax({
 					type : "GET", 
 					url:url10,
@@ -611,7 +611,7 @@ jQuery(function($) {
 		
 
 $(function () {
-		$.getJSON('http://localhost:8080/Ru250/searchhstock?name=GOOG', 				function (data) {
+		$.getJSON('searchhstock?name=GOOG', 				function (data) {
         // Create the chart
         $('#container').highcharts('StockChart', {
 
@@ -636,7 +636,7 @@ $(function () {
 
 });
 $(function () {
-		$.getJSON('http://localhost:8080/Ru250/searchhstock?name=MSFT', 				function (data) {
+		$.getJSON('searchhstock?name=MSFT', 				function (data) {
         // Create the chart
         $('#container1').highcharts('StockChart', {
 
