@@ -41,11 +41,14 @@ public class HstockDAOImpl implements HstockDAO{
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		String sql        = "SELECT `close` FROM hstock WHERE DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 10 DAY) AND stock = ? ORDER BY CLOSE DESC;";
+		String sql        = "SELECT `close` FROM hstock WHERE DATE_FORMAT(DATE, '%Y-%m-%d') > DATE_SUB(CURDATE(),INTERVAL 10 DAY) AND stock = ? ORDER BY CLOSE DESC";
 		SQLQuery q = session.createSQLQuery(sql);
 		q.setParameter(0, stock);
 		List<Double> list = q.list() ;
-		double result = list.get(0);
+		double result=0;
+		if(list.size()>0){
+			result = list.get(0);
+		}
 		return result;
 	}
 	

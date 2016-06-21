@@ -65,7 +65,7 @@ public class StockDAOImpl implements StockDAO{
 	public List<Double> getStockValue(String stockName){
 		Session session = this.sessionFactory.getCurrentSession();
 		Query q = session.createQuery("select value from Stock where stock = ?");
-		q.setParameter(0, stockName);
+		q.setParameter(0, stockName).setMaxResults(30);
 		List<Float> list = q.list();
 		List<Double> l = new ArrayList();
 		for(Float v:list){
@@ -80,7 +80,7 @@ public class StockDAOImpl implements StockDAO{
 	public List<Double> getHStockValue(String stockName){
 		Session session = this.sessionFactory.getCurrentSession();
 		Query q = session.createQuery("select close from Hstock where stock = ?");
-		q.setParameter(0, stockName);
+		q.setParameter(0, stockName).setMaxResults(30);;
 		List<Double> list = q.list();
 //		List<Double> l = new ArrayList();
 //		for(Float v:list){
